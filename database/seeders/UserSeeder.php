@@ -20,7 +20,7 @@ class UserSeeder extends Seeder
     {
         User::factory()->create([
             'name' => 'Administrador',
-            'email' => 'admin@example.com',
+            'email' => 'admin@email.com',
             'email_verified_at' => now(),
             'password' => bcrypt('123123123'),
         ])->assignRole('admin');
@@ -118,7 +118,12 @@ class UserSeeder extends Seeder
 
         User::factory()->create([
             'name' => 'Test User',
-            'email' => 'test@example.com',
+            'email' => 'test@email.com',
+            'password' => bcrypt('123123123'),
+        ])->assignRole('usuario');
+        User::factory()->create([
+            'name' => 'user',
+            'email' => 'user@email.com',
             'password' => bcrypt('123123123'),
         ])->assignRole('usuario');
         //----------------- CONSULTORIO --------------------------
@@ -154,6 +159,14 @@ class UserSeeder extends Seeder
             'especialidad' => 'FISIOTERAPIA',
             'estado' => 'A',
         ]);
+
+        User::factory()->create([
+            'name' => 'blogger',
+            'email' => 'bloger@email.com',
+            'email_verified_at' => now(),
+            'password' => bcrypt('123123123'),
+        ])->assignRole('blogger');
+
         // User::create([
         //     'name'=>'Hebron Teacher',
         //     'sexo'=> 'M',

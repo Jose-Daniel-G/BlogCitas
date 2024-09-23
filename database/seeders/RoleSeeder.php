@@ -17,8 +17,8 @@ class RoleSeeder extends Seeder
     public function run()
     {
         //-----------------------------------------------------------------------------------------------        
-        $role3 = Role::create(['name' => 'Profesor']);
-        $role4 = Role::create(['name' => 'Alumno']);
+        $role3 = Role::create(['name' => 'profesor']);
+        $role4 = Role::create(['name' => 'alumno']);
         // ----------------------------------------------------------------------------------------------
         $admin = Role::create(['name' => 'admin']);
         $blogger = Role::create(['name' => 'blogger']);
@@ -31,9 +31,7 @@ class RoleSeeder extends Seeder
 
 
         // Permission::create(['name'=>'admin.home'])->assignRole($admin);
-        Permission::create(['name' => 'admin.home'])->syncRoles([$admin, $secretaria, $doctor, $usuario, $paciente, $blogger, $role3, $role4]);
         Permission::create(['name' => 'admin.users.create'])->syncRoles([$admin]);
-        Permission::create(['name' => 'admin.users.update'])->syncRoles([$admin]);
 
         Permission::create(['name' => 'admin.categories.index'])->syncRoles([$admin, $blogger]);
         Permission::create(['name' => 'admin.categories.create'])->syncRoles([$admin]);
@@ -52,14 +50,26 @@ class RoleSeeder extends Seeder
 
         //------------------------[ ALEJANDRO PROJECT  ]---------------------------------
         // Permission::create(['name'=>'admin.home'])->assignRole($admin);
+        Permission::create(['name' => 'admin.home'])->syncRoles([$admin, $secretaria, $doctor, $usuario, $paciente, $blogger, $role3, $role4]);
         Permission::create(['name' => 'admin.index']);
+
         //rutas para el admin
         Permission::create(['name' => 'admin.users.index'])->syncRoles([$admin]);
         Permission::create(['name' => 'admin.usuarios.create'])->syncRoles([$admin]);
         Permission::create(['name' => 'admin.usuarios.store'])->syncRoles([$admin]);
         Permission::create(['name' => 'admin.usuarios.show'])->syncRoles([$admin]);
         Permission::create(['name' => 'admin.usuarios.edit'])->syncRoles([$admin]);
+        Permission::create(['name' => 'admin.users.update'])->syncRoles([$admin]);
         Permission::create(['name' => 'admin.usuarios.destroy'])->syncRoles([$admin]);
+
+        //rutas - configuraciones
+        Permission::create(['name' => 'admin.configuraciones.index'])->syncRoles([$admin]);
+        Permission::create(['name' => 'admin.configuraciones.create'])->syncRoles([$admin]);
+        Permission::create(['name' => 'admin.configuraciones.store'])->syncRoles([$admin]);
+        Permission::create(['name' => 'admin.configuraciones.show'])->syncRoles([$admin]);
+        Permission::create(['name' => 'admin.configuraciones.edit'])->syncRoles([$admin]);
+        Permission::create(['name' => 'admin.configuraciones.destroy'])->syncRoles([$admin]);
+
         //rutas para el admin - secretarias
         Permission::create(['name' => 'admin.secretarias.index'])->syncRoles([$admin]);
         Permission::create(['name' => 'admin.secretarias.create'])->syncRoles([$admin]);
@@ -67,6 +77,7 @@ class RoleSeeder extends Seeder
         Permission::create(['name' => 'admin.secretarias.show'])->syncRoles([$admin]);
         Permission::create(['name' => 'admin.secretarias.edit'])->syncRoles([$admin]);
         Permission::create(['name' => 'admin.secretarias.destroy'])->syncRoles([$admin]);
+
         //rutas para el admin - pacientes
         Permission::create(['name' => 'admin.pacientes.index'])->syncRoles([$admin, $secretaria]);
         Permission::create(['name' => 'admin.pacientes.create'])->syncRoles([$admin, $secretaria]);
@@ -96,8 +107,8 @@ class RoleSeeder extends Seeder
         Permission::create(['name' => 'admin.horarios.edit'])->syncRoles([$admin, $secretaria]);
         Permission::create(['name' => 'admin.horarios.destroy'])->syncRoles([$admin, $secretaria]);
         //----------------------------------------------------------------------------------------
-        Permission::create(['name' => 'admin.horarios.cargar_datos_cosultorios'])->syncRoles([$admin, $secretaria]);
-        Permission::create(['name' => 'admin.horarios.cargar_reserva_doctores'])->syncRoles([$admin, $secretaria]);
+        Permission::create(['name' => 'admin.horarios.cargar_datos_cosultorios'])->syncRoles([$admin, $secretaria, $usuario]);
+        Permission::create(['name' => 'admin.horarios.cargar_reserva_doctores'])->syncRoles([$admin, $secretaria, $usuario]);
         //----------------------------------------------------------------------------------------
         // $admin->permissions()->attach();
 

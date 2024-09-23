@@ -22,10 +22,11 @@ class HomeController extends Controller
         $total_consultorios = Consultorio::count();
         $total_doctores = Doctor::count();
         $total_horarios = Horario::count();
+        $total_eventos = CalendarEvent::count();
         
         $consultorios = Consultorio::all();
         $doctores =Doctor::all();
         $eventos = CalendarEvent::all();
-        return view('admin.index', compact('total_usuarios', 'total_secretarias', 'total_pacientes', 'total_consultorios', 'total_doctores', 'total_horarios', 'consultorios', 'doctores', 'eventos'));
+        return view('admin.index', compact('total_usuarios', 'total_secretarias', 'total_pacientes', 'total_consultorios', 'total_doctores', 'total_horarios','total_eventos','consultorios', 'doctores', 'eventos'));
     }
 }

@@ -34,6 +34,9 @@ Route::get('/admin/ver_reservas/{id}', [AdminController::class, 'ver_reservas'])
 //RUTAS USUARIOS ADMIN
 // Route::resource('/admin/usuarios', UsuarioController::class)->names('admin.usuarios')->middleware('auth', 'can:admin.usuarios');
 
+//RUTAS CONFIGURACIONES ADMIN
+Route::resource('/admin/usuarios', UsuarioController::class)->names('admin.usuarios')->middleware('auth', 'can:admin.usuarios');
+
 //RUTAS SECRETARIAS ADMIN
 Route::resource('/admin/secretarias', SecretariaController::class)->names('admin.secretarias')->middleware('auth', 'can:admin.secretarias');
 

@@ -19,6 +19,22 @@
                 <div class="small-box bg-info">
                     <div class="inner">
                         <h3>{{ $total_usuarios }}</h3>
+                        <p>Configuracion</p>
+                    </div>
+                    <div class="icon">
+                        <ion-icon name="settings-outline"></ion-icon>
+                    </div>
+                    <a href="{{ route('admin.users.index') }}" class="small-box-footer"><i
+                            class="fas fa-sync-alt"></i></a>
+                </div>
+            </div>
+        @endcan
+    <div class="row">
+        @can('admin.users.index')
+            <div class="col-lg-3 col-6">
+                <div class="small-box bg-info">
+                    <div class="inner">
+                        <h3>{{ $total_usuarios }}</h3>
                         <p>Usuarios</p>
                     </div>
                     <div class="icon">
@@ -39,7 +55,7 @@
                             <p>Secretarias</p>
                     </div>
                     <div class="icon">
-                        <i class="ion fas bi bi-person-circle"></i>
+                        <i class="ion ion-person-add"></i>
                     </div>
                     <a href="{{ route('admin.secretarias.index') }}" class="small-box-footer">More info <i
                             class="fas fa-arrow-circle-right"></i></a>
@@ -110,6 +126,22 @@
                 </div>
             </div>
         @endcan
+        {{-- @can('admin.reservas.index') --}}
+            <div class="col-lg-3 col-6">
+                <div class="small-box bg-secondary">
+                    <div class="inner">
+                        <h3>{{ $total_eventos }}</h3>
+
+                        <p>Reservas</p>
+                    </div>
+                    <div class="icon">
+                        <i class="ion fas bi bi-calendar2-week"></i>
+                    </div>
+                    <a href="" class="small-box-footer"> <i
+                            class="fas fa-calendar-alt"></i></a>
+                </div>
+            </div>
+        {{-- @endcan --}}
     </div>
     @can('admin.horarios.cargar_datos_cosultorios')
         <div class="row">
@@ -246,47 +278,50 @@
             </div>
         </div>
     @endcan
-    <div class="row">
-        <div class="col-md-12">
-            <div class="card card-outline card-primary">
-                <div class="card-header">
-                    <div class="row">
-                        <div class="col-md-4">
-                            <h3 class="card-title">Calendario de reservas</h3>
+    @if (Auth::check() && Auth::user()->doctor)
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card card-outline card-primary">
+                    <div class="card-header">
+                        <div class="row">
+                            <div class="col-md-4">
+                                <h3 class="card-title">Calendario de reservas</h3>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="card-body">
-                    {{-- {{ Auth::user()->doctor->id}} --}}
-                    <table id="reservas" class="table table-striped table-bordered table-hover table-sm">
-                        <thead class="thead-dark">
-                            <tr>
-                                <th>Nro</th>
-                                <th>Usuario</th>
-                                <th>Fecha de la reserva</th>
-                                <th>Hora de reserva</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <?php $contador = 1; ?>
-                            @foreach ($eventos as $evento)
-                                {{-- @if (Auth::user()->doctor->id == $evento->doctor_id)  --}} {{-- NOTA: SI  FALLA --}}
+                    <div class="card-body">
+                        {{-- {{ Auth::user()->doctor->id}} --}}
+                        <table id="reservas" class="table table-striped table-bordered table-hover table-sm">
+                            <thead class="thead-dark">
                                 <tr>
-                                    <td scope="row">{{ $contador++ }}</td>
-                                    <td scope="row">{{ $evento->user->name }}</td>
-                                    <td scope="row" class="text-center">
-                                        {{ \Carbon\Carbon::parse($evento->start)->format('Y-m-d') }}</td>
-                                    <td scope="row" class="text-center">
-                                        {{ \Carbon\Carbon::parse($evento->end)->format('H:i') }}</td>
+                                    <th>Nro</th>
+                                    <th>Usuario</th>
+                                    <th>Fecha de la reserva</th>
+                                    <th>Hora de reserva</th>
                                 </tr>
-                                {{-- @endif --}}
-                            @endforeach
-                        </tbody>
-                    </table>
+                            </thead>
+                            <tbody>
+                                <?php $contador = 1; ?>
+                                @foreach ($eventos as $evento)
+                                    {{-- @if (Auth::user()->doctor->id == $evento->doctor_id)  --}} {{-- NOTA: SI  FALLA --}}
+                                    <tr>
+                                        <td scope="row">{{ $contador++ }}</td>
+                                        <td scope="row">{{ $evento->user->name }}</td>
+                                        <td scope="row" class="text-center">
+                                            {{ \Carbon\Carbon::parse($evento->start)->format('Y-m-d') }}</td>
+                                        <td scope="row" class="text-center">
+                                            {{ \Carbon\Carbon::parse($evento->end)->format('H:i') }}</td>
+                                    </tr>
+                                    {{-- @endif --}}
+                                @endforeach
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
+    @endif
+
 @stop
 
 @section('js')

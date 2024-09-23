@@ -12,13 +12,13 @@ use Illuminate\Support\Facades\Storage;
 
 class PostController extends Controller
 {
-    public function __construct()
-    {
-        $this->middleware('can:admin.post.index')->only('index');
-        $this->middleware('can:admin.post.create')->only('create', 'store');
-        $this->middleware('can:admin.post.edit')->only('edit', 'update');
-        $this->middleware('can:admin.post.destroy')->only('destroy');
-    }
+    // public function __construct()
+    // {
+    //     $this->middleware('can:admin.post.index')->only('index');
+    //     $this->middleware('can:admin.post.create')->only('create', 'store');
+    //     $this->middleware('can:admin.post.edit')->only('edit', 'update');
+    //     $this->middleware('can:admin.post.destroy')->only('destroy');
+    // }
     public function index()
     {
         return view('admin.posts.index');
@@ -42,7 +42,6 @@ class PostController extends Controller
         if (!empty($file)) {
             $nombre =  time() . "_" . $file->getClientOriginalName();$imagenes = $file->storeAs('public/uploads', $nombre);
             $url = Storage::url($imagenes);
-
             $post->image()->create([ 'url' => $url]);
         }
         

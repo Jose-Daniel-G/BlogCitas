@@ -325,16 +325,22 @@ return [
             'icon' => 'fas fa-home fa-fw ',
         ],
         [
+            'text'        => 'Configuraciones',
+            'route'         => 'admin.config.index',
+            'icon' => 'fas fa-fw fa-user',
+            'can'  => 'admin.config.index',
+        ],
+        [
             'text'        => 'Usuarios',
             'route'         => 'admin.users.index',
             'icon' => 'fas fa-fw fa-user',
             'can'  => 'admin.users.index',
         ],
-        ['header' => 'ADMINISTRADOR'],
+        ['header' => 'ADMINISTRADOR', 'can' => 'admin.secretarias.index',],
         [
             'text' => 'Secretarias',
             'icon' => 'fas fa-laptop',
-            // 'can' => 'admin.secretarias.index',
+            'can' => 'admin.secretarias.index',
             'submenu' => [
                 [
                     'text' => 'Creacion de secretarias',
@@ -352,7 +358,7 @@ return [
         [
             'text' => 'Pacientes',
             'icon' => 'fas fa-users mr-2',
-            // 'can' => 'admin.pacientes.index',
+            'can' => 'admin.pacientes.index',
             'submenu' => [
                 [
                     'text' => 'Creacion de pacientes',
@@ -370,7 +376,7 @@ return [
         [
             'text' => 'Consultorios',
             'icon' => 'fas fa-book',
-            // 'can' => 'admin.consultorios.index',
+            'can' => 'admin.consultorios.index',
             'submenu' => [
                 [
                     'text' => 'Creacion de consultorios',
@@ -388,7 +394,7 @@ return [
         [
             'text' => 'Doctores',
             'icon' => 'nav-icon fas fa-copy',
-            // 'can' => 'admin.doctores.index',
+            'can' => 'admin.doctores.index',
             'submenu' => [
                 [
                     'text' => 'Creacion de doctores',
@@ -406,7 +412,7 @@ return [
         [
             'text' => 'Horarios',
             'icon' => 'fas fa-calendar-alt',
-            // 'can' => 'admin.horarios.index',
+            'can' => 'admin.horarios.index',
             'submenu' => [
                 [
                     'text' => 'Creacion de horarios',
@@ -468,7 +474,7 @@ return [
         //         ],
         //     ],
         // ],
-        ['header' => 'EN DESARROLLO'],
+        // ['header' => 'EN DESARROLLO'],
         [
             'text' => 'Pending',
             'icon' => 'far fa-fw fa-bookmark',
@@ -491,17 +497,17 @@ return [
                 // ],
             ],
         ],
-        ['header' => 'OPCIONES DE BLOG'],
+        ['header' => 'OPCIONES DE BLOG', 'can'  => 'admin.posts.index'],
         [
             'text' => 'Posts',
             'icon' => 'fas fa-fw fa-share',
+            'can'  => 'admin.posts.index',
             'submenu' => [
                 [
                     'text' => 'Categorias',
                     'route' => 'admin.categories.index',
                     'icon' => 'fab fa-fw fa-buffer',
                     'active' => ['admin/categories*'],
-
                 ],
                 [
                     'text' => 'Etiquetas',
@@ -515,6 +521,7 @@ return [
                     'route' => 'admin.posts.index',
                     'icon' => 'fas fa-fw fa-clipboard',
                     'active' => ['admin/posts*'],
+                    'can'  => 'admin.posts.index',
                 ],
                 [
                     'text' => 'Crear nuevo post',
