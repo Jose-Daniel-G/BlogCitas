@@ -18,6 +18,7 @@ class UserSeeder extends Seeder
      */
     public function run(): void
     {
+        $this->call(RoleSeeder::class);
 
         User::factory(10)->create();
 
@@ -157,7 +158,6 @@ class UserSeeder extends Seeder
         Paciente::factory(10)->create()->each(function ($user){
             $user->assignRole('paciente');
         });
-        // $this->call(PacienteSeeder::class);
 
         /// CREACION DE HORARIOS
         Horario::create([

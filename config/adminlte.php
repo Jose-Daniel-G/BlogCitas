@@ -294,26 +294,26 @@ return [
 
     'menu' => [
         // Navbar items:
-        [
-            'type' => 'navbar-search',
-            'text' => 'search',
-            'topnav_right' => true,
-        ],
-        [
-            'type' => 'fullscreen-widget',
-            'topnav_right' => true,
-        ],
+        // [
+        //     'type' => 'navbar-search',
+        //     'text' => 'search',
+        //     'topnav_right' => true,
+        // ],
+        // [
+        //     'type' => 'fullscreen-widget',
+        //     'topnav_right' => true,
+        // ],
 
-        // Sidebar items:
-        [
-            'type' => 'sidebar-menu-search',
-            'text' => 'search',
-        ],
-        [
-            'text' => 'blog',
-            'url' => 'admin/blog',
-            'can' => 'manage-blog',
-        ],
+        // // Sidebar items:
+        // [
+        //     'type' => 'sidebar-menu-search',
+        //     'text' => 'search',
+        // ],
+        // [
+        //     'text' => 'blog',
+        //     'url' => 'admin/blog',
+        //     'can' => 'manage-blog',
+        // ],
         // [
         //     'text' => 'Usuarios',
         //     'route' => 'admin.home',
@@ -321,31 +321,115 @@ return [
         // ],
         [
             'text' => 'Dashboard',
-            // 'url' => 'admin/pages',
             'route' => 'admin.home',
             'icon' => 'fas fa-home fa-fw ',
-            // 'label' => 4,
-            // 'label_color' => 'success',
-        ],[
+        ],
+        [
             'text'        => 'Usuarios',
             'route'         => 'admin.users.index',
-            'icon'        => 'fas fa-users fa-fw',
+            'icon' => 'fas fa-fw fa-user',
             'can'  => 'admin.users.index',
         ],
         ['header' => 'ADMINISTRADOR'],
         [
-            'text' => 'Categorias',
-            'route' => 'admin.categories.index',
-            'icon' => 'fab fa-fw fa-buffer',
-            'active' => ['admin/categories*'],
+            'text' => 'Secretarias',
+            'icon' => 'fas fa-laptop',
+            // 'can' => 'admin.secretarias.index',
+            'submenu' => [
+                [
+                    'text' => 'Creacion de secretarias',
+                    'icon'        => 'far fa-circle nav-icon',
+                    'route' => 'admin.secretarias.create',
+                ],
+                [
+                    'text' => 'Listado de secretarias',
+                    'icon'        => 'far fa-circle nav-icon',
+                    'route' => 'admin.secretarias.index',
+                ],
 
+            ],
         ],
         [
-            'text' => 'Etiquetas',
-            'route' => 'admin.tags.index',
-            'icon' => 'far fa-fw fa-bookmark',
-            'active' => ['admin/tags*'],
+            'text' => 'Pacientes',
+            'icon' => 'fas fa-users mr-2',
+            // 'can' => 'admin.pacientes.index',
+            'submenu' => [
+                [
+                    'text' => 'Creacion de pacientes',
+                    'icon'        => 'far fa-circle nav-icon',
+                    'route' => 'admin.pacientes.create',
+                ],
+                [
+                    'text' => 'Listado de pacientes',
+                    'icon'        => 'far fa-circle nav-icon',
+                    'route' => 'admin.pacientes.index',
+                ],
+
+            ],
         ],
+        [
+            'text' => 'Consultorios',
+            'icon' => 'fas fa-book',
+            // 'can' => 'admin.consultorios.index',
+            'submenu' => [
+                [
+                    'text' => 'Creacion de consultorios',
+                    'icon'        => 'far fa-circle nav-icon',
+                    'route' => 'admin.consultorios.create',
+                ],
+                [
+                    'text' => 'Listado de consultorios',
+                    'icon'        => 'far fa-circle nav-icon',
+                    'route' => 'admin.consultorios.index',
+                ],
+
+            ],
+        ],
+        [
+            'text' => 'Doctores',
+            'icon' => 'nav-icon fas fa-copy',
+            // 'can' => 'admin.doctores.index',
+            'submenu' => [
+                [
+                    'text' => 'Creacion de doctores',
+                    'icon'        => 'far fa-circle nav-icon',
+                    'route' => 'admin.doctores.create',
+                ],
+                [
+                    'text' => 'Listado de doctores',
+                    'icon'        => 'far fa-circle nav-icon',
+                    'route' => 'admin.doctores.index',
+                ],
+
+            ],
+        ],
+        [
+            'text' => 'Horarios',
+            'icon' => 'fas fa-calendar-alt',
+            // 'can' => 'admin.horarios.index',
+            'submenu' => [
+                [
+                    'text' => 'Creacion de horarios',
+                    'icon'        => 'far fa-circle nav-icon',
+                    'route' => 'admin.horarios.create',
+                ],
+                [
+                    'text' => 'Listado de horarios',
+                    'icon'        => 'far fa-circle nav-icon',
+                    'route' => 'admin.horarios.index',
+                ],
+
+            ],
+        ],
+
+        // =====================================================================
+        // [
+        //     'text' => 'Clases',
+        //     'route' => 'admin.clases.index',
+        //     'icon' => 'far fa-fw fa-bookmark',
+        //     'active' => ['admin/clases*'],
+        //     // 'can'  => 'admin.users.index',
+        // ],
         // [
         //     'text' => 'multilevel',
         //     'icon' => 'fas fa-fw fa-share',
@@ -384,19 +468,64 @@ return [
         //         ],
         //     ],
         // ],
+        ['header' => 'EN DESARROLLO'],
+        [
+            'text' => 'Pending',
+            'icon' => 'far fa-fw fa-bookmark',
+            // 'can' => 'admin.secretarias.index',
+            'submenu' => [
+                // [
+                //     'text' => 'Vehiculos',
+                //     'route' => 'admin.vehiculos.index',
+                //     'icon' => 'far fa-fw fa-bookmark',
+                //     'active' => ['admin/vehiculos*'],
+                //     // 'can'  => 'admin.users.index',
+                // ],
+
+                // [
+                //     'text' => 'Cursos',
+                //     'route' => 'admin.cursos.index',
+                //     'icon' => 'far fa-fw fa-bookmark',
+                //     'active' => ['admin/cursos*'],
+                //     // 'can'  => 'admin.users.index',
+                // ],
+            ],
+        ],
         ['header' => 'OPCIONES DE BLOG'],
         [
-            'text' => 'Lista de post',
-            // 'icon_color' => 'red',
-            'route' => 'admin.posts.index',
-            'icon' => 'fas fa-fw fa-clipboard'
+            'text' => 'Posts',
+            'icon' => 'fas fa-fw fa-share',
+            'submenu' => [
+                [
+                    'text' => 'Categorias',
+                    'route' => 'admin.categories.index',
+                    'icon' => 'fab fa-fw fa-buffer',
+                    'active' => ['admin/categories*'],
+
+                ],
+                [
+                    'text' => 'Etiquetas',
+                    'route' => 'admin.tags.index',
+                    'icon' => 'far fa-fw fa-bookmark',
+                    'active' => ['admin/tags*'],
+                ],
+                [
+                    'text' => 'Lista de post',
+                    // 'icon_color' => 'red',
+                    'route' => 'admin.posts.index',
+                    'icon' => 'fas fa-fw fa-clipboard',
+                    'active' => ['admin/posts*'],
+                ],
+                [
+                    'text' => 'Crear nuevo post',
+                    // 'icon_color' => 'yellow',
+                    'route' => 'admin.posts.create',
+                    'icon' => 'fas fa-fw fa-file',
+
+                ],
+            ],
         ],
-        [
-            'text' => 'Crear nuevo post',
-            // 'icon_color' => 'yellow',
-            'route' => 'admin.posts.create',
-            'icon' => 'fas fa-fw fa-file'
-        ],
+
         // [
         //     'text' => 'information',
         //     'icon_color' => 'cyan',

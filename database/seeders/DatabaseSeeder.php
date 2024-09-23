@@ -16,16 +16,8 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        // \App\Models\User::factory(10)->create();
-
-        // \App\Models\User::factory()->create([
-        //     'name' => 'Test User',
-        //     'email' => 'test@example.com',
-        // ]);
-
         Storage::deleteDirectory('posts');
         Storage::makeDirectory('posts');
-        $this->call(RoleSeeder::class);
         $this->call(UserSeeder::class);
         // Category::factory(4)->create();
         $this->call(CategorySeeder::class);

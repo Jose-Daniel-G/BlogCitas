@@ -18,3 +18,4 @@ Route::resource('posts', PostController::class)->names('admin.posts');
 
 // Route::resource('cursos', CursoController::class)->names('admin.cursos');
 // Route::resource('clases', ClaseController::class)->names('admin.clases');
+
