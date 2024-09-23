@@ -6,6 +6,15 @@ use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\PostController;
 use App\Http\Controllers\Admin\TagController;
 use App\Http\Controllers\Admin\UserController;
+
+use App\Http\Controllers\AdminController;
+use App\Http\Controllers\PacienteController;
+use App\Http\Controllers\SecretariaController;
+use App\Http\Controllers\ConsultorioController;
+use App\Http\Controllers\DoctorController;
+
+// use App\Http\Controllers\UsuarioController;
+
 // use App\Http\Controllers\ClaseController;
 // use App\Http\Controllers\CursoController;
 
@@ -19,3 +28,21 @@ Route::resource('posts', PostController::class)->names('admin.posts');
 // Route::resource('cursos', CursoController::class)->names('admin.cursos');
 // Route::resource('clases', ClaseController::class)->names('admin.clases');
 
+//RUTAS ADMIN
+Route::get('/admin', [AdminController::class, 'index'])->name('admin.index')->middleware('auth');
+Route::get('/admin/ver_reservas/{id}', [AdminController::class, 'ver_reservas'])->name('admin.ver_reservas')->middleware('auth','can:admin.ver_reservas');
+
+//RUTAS USUARIOS ADMIN
+// Route::resource('/admin/usuarios', UsuarioController::class)->names('admin.usuarios')->middleware('auth', 'can:admin.usuarios');
+
+//RUTAS SECRETARIAS ADMIN
+Route::resource('/admin/secretarias', SecretariaController::class)->names('admin.secretarias')->middleware('auth', 'can:admin.secretarias');
+
+//RUTAS PACIENTES ADMIN
+Route::resource('/admin/pacientes', PacienteController::class)->names('admin.pacientes')->middleware('auth', 'can:admin.pacientes');
+
+//RUTAS CONSULTORIOS ADMIN
+Route::resource('/admin/consultorios', ConsultorioController::class)->names('admin.consultorios')->middleware('auth', 'can:admin.consultorios');
+
+//RUTAS DOCTORES ADMIN
+Route::resource('/admin/doctores', DoctorController::class)->names('admin.doctores')->parameters(['doctores' => 'doctor'])->middleware('auth', 'can:admin.doctores');

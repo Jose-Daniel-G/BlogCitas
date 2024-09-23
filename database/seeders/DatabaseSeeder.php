@@ -11,16 +11,19 @@ use Illuminate\Support\Facades\Storage;
 
 class DatabaseSeeder extends Seeder
 {
-    /**
-     * Seed the application's database.
-     */
+
     public function run(): void
     {
         Storage::deleteDirectory('posts');
         Storage::makeDirectory('posts');
-        $this->call(UserSeeder::class);
+
+        $this->call([RoleSeeder::class, 
+                        // CursoSeeder::class,
+                        UserSeeder::class,
+                        CategorySeeder::class,
+                        // VehiculoSeeder::class,
+                    ]);//  TagSeeder::class,  
         // Category::factory(4)->create();
-        $this->call(CategorySeeder::class);
 
         Tag::factory(8)->create();
         $this->call(PostSeeder::class);

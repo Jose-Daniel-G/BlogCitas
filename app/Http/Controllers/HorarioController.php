@@ -27,11 +27,10 @@ class HorarioController extends Controller
         return view('admin.horarios.create', compact('doctores', 'consultorios', 'horarios'));
     }
     public function cargar_datos_consultorios($id)
-    {
+    { 
+        // echo $id;
         try {
             $horarios = Horario::with('doctor', 'consultorio')->where('consultorio_id', $id)->get();
-            // print_r($horarios);
-
             return view('admin.horarios.cargar_datos_consultorios', compact('horarios'));
         } catch (\Exception $exception) {
             return response()->json(['mesaje' => 'Error']);

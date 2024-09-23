@@ -28,7 +28,7 @@ class AdminController extends Controller
         return view('admin.index', compact('total_usuarios', 'total_secretarias', 'total_pacientes', 'total_consultorios', 'total_doctores', 'total_horarios', 'consultorios', 'doctores', 'eventos'));
     }
     public function ver_reservas($id)
-    {  
+    { // echo $id;
         $eventos = CalendarEvent::where('user_id',$id)->get();
         return view('admin.ver_reservas', compact('eventos'));
     }

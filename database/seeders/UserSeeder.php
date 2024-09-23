@@ -18,84 +18,110 @@ class UserSeeder extends Seeder
      */
     public function run(): void
     {
-        $this->call(RoleSeeder::class);
-
-        User::factory(10)->create();
-
         User::factory()->create([
             'name' => 'Administrador',
             'email' => 'admin@example.com',
+            'email_verified_at' => now(),
             'password' => bcrypt('123123123'),
         ])->assignRole('admin');
 
         User::create([
             'name' => 'Jose Daniel Grijalba Osorio',
             'email' => 'jose.jdgo97@gmail.com',
+            'email_verified_at' => now(),
             'password' => bcrypt('123123123'),
         ])->assignRole('admin');
 
         User::create([
             'name' => 'Secretaria',
-            'email' => 'secretaria@gmail.com',
+            'email' => 'secretaria@email.com',
+            'email_verified_at' => now(),
             'password' => bcrypt('123123123'),
         ])->assignRole('secretaria');
 
         Secretaria::create([
             'nombres' => 'Secretaria',
             'apellidos' => 'Catrana',
-            'cc' => 'secretaria@gmail.com',
-            'celular' =>'3147078256',
-            'fecha_nacimiento' =>'10/10/2010',
-            'direccion' =>'calle 5 o este',
-            'user_id' =>'3',
+            'cc' => 'secretaria@email.com',
+            'celular' => '3147078256',
+            'fecha_nacimiento' => '10/10/2010',
+            'direccion' => 'calle 5 o este',
+            'user_id' => '3',
         ]);
         User::create([
             'name' => 'Doctor',
-            'email' => 'doctor@gmail.com',
+            'email' => 'doctor@email.com',
+            'email_verified_at' => now(),
             'password' => bcrypt('123123123'),
         ])->assignRole('doctor');
-
         Doctor::create([
             'nombres' => 'Doctor',
             'apellidos' => 'Lewis',
             'telefono' => '4564564565',
             'licencia_medica' => '123123123',
             'especialidad' => 'PEDIATRIA',
-            'user_id' =>'4',
+            'user_id' => '4',
         ]);
+        //--------------------------------------------]
         User::create([
             'name' => 'Doctor1',
-            'email' => 'doctor1@gmail.com',
+            'email' => 'doctor1@email.com',
+            'email_verified_at' => now(),
             'password' => bcrypt('123123123'),
         ])->assignRole('doctor');
-
         Doctor::create([
             'nombres' => 'Doctor1',
             'apellidos' => 'Lewis',
             'telefono' => '432324324',
             'licencia_medica' => '777777',
             'especialidad' => 'ODONTOLOGIA',
-            'user_id' =>'5',
+            'user_id' => '5',
         ]);
+        //--------------------------------------------]
         User::create([
             'name' => 'Doctor2',
-            'email' => 'doctor2@gmail.com',
+            'email' => 'doctor2@email.com',
+            'email_verified_at' => now(),
             'password' => bcrypt('11111111'),
         ])->assignRole('doctor');
-
         Doctor::create([
             'nombres' => 'Doctor2',
             'apellidos' => 'Lewis',
             'telefono' => '123123213',
             'licencia_medica' => '222222',
             'especialidad' => 'FISIOTERAPIA',
-            'user_id' =>'6',
+            'user_id' => '6',
         ]);
+        //--------------------------------------------]
+        User::create([
+            'name' => 'Fancisco Antonio Grijalba Osorio', // 'sexo'=> 'M', 'telefono'=>'314852684',
+            'email' => 'francisco.grijalba@email.com',
+            'email_verified_at' => now(),
+            'password' => bcrypt('123123123'),
+        ])->assignRole('admin');
+
+        User::create([
+            'name' => 'Juan David Grijalba Osorio',
+            // 'sexo'=> 'M',
+            // 'telefono'=>'314852685',
+            'email' => 'juandavidgo1997@email.com',
+            'email_verified_at' => now(),
+            'password' => bcrypt('123123123'),
+        ])->assignRole('blogger');
+
         User::create([
             'name' => 'Paciente',
-            'email' => 'paciente@gmail.com',
+            'email' => 'paciente@email.com',
+            'email_verified_at' => now(),
             'password' => bcrypt('123123123'),
         ])->assignRole('paciente');
+
+        User::factory()->create([
+            'name' => 'Test User',
+            'email' => 'test@example.com',
+            'password' => bcrypt('123123123'),
+        ])->assignRole('usuario');
+        //----------------- CONSULTORIO --------------------------
         Consultorio::create([
             'nombre' => 'PEDIATRIA',
             'ubicacion' => '1-1A',
@@ -128,37 +154,34 @@ class UserSeeder extends Seeder
             'especialidad' => 'FISIOTERAPIA',
             'estado' => 'A',
         ]);
-        // Paciente::create([
-        //     'nombres' => 'Paciente',
-        //     'apellidos' => 'miania',
-        //     'cc' => '123166234' ,
-        //     'nro_seguro' => '45665645',
-        //     'fecha_nacimiento' => '02/05/2000',
-        //     'genero' => 'M',
-        //     'celular' => '324652344',
-        //     'correo' => 'paciente@gmail.com',
-        //     'direccion' => 'cre maga 15',
-        //     'alergias' => 'polvo',
-        //     'contacto_emergencia' => '366956215',
-        //     'user_id' =>'7',
-        // ]);
-        
-        User::factory()->create([
-            'name' => 'Test User',
-            'email' => 'test@example.com',
-            'password' => bcrypt('123123123'),
-        ])->assignRole('usuario');
-        User::factory()->create([
-            'name' => 'user',
-            'email' => 'user@example.com',
-            'password' => bcrypt('123123123'),
-        ])->assignRole('usuario');
+        // User::create([
+        //     'name'=>'Hebron Teacher',
+        //     'sexo'=> 'M',
+        //     'telefono'=>'314852686',
+        //     'email'=> 'hebron.customer@email.com',
+        //     'email_verified_at' => now(),           
+        //     'password'=> bcrypt('123123123'),
+        // ])->assignRole('Profesor');
 
-        
-        Paciente::factory(10)->create()->each(function ($user){
-            $user->assignRole('paciente');
-        });
+        // User::create([
+        //     'name'=>'Mario',
+        //     'sexo'=> 'M',
+        //     'telefono'=>'314852567',
+        //     'email'=> 'mario@email.com',
+        //     'email_verified_at' => now(),            
+        //     'password'=> bcrypt('123123123'),
+        // ])->assignRole('Alumno');
 
+        // User::create([
+        //     'name'=>'Alejandro',
+        //     'sexo'=> 'M',
+        //     'telefono'=>'314852568',
+        //     'email'=> 'alejo@email.com',
+        //     'email_verified_at' => now(),            
+        //     'password'=> bcrypt('123123123'),
+        // ])->assignRole('Alumno');
+
+        User::factory(9)->create();
         /// CREACION DE HORARIOS
         Horario::create([
             'dia' => 'LUNES',
@@ -167,33 +190,5 @@ class UserSeeder extends Seeder
             'doctor_id' => '1',
             'consultorio_id' => '1',
         ]);
-        //------------------ OLD DATA ----------------------------
-        // User::create([
-        //     'name'=>'Jose Daniel Grijalba Osorio',
-        //     'sexo'=> 'M',
-        //     'telefono'=>'314852684',
-        //     'email'=> 'jose.jdgo97@gmail.com',
-        //     'email_verified_at' => now(),            
-        //     'password'=> bcrypt('123123123'),
-        // ])->assignRole('Admin');
-        // User::create([
-        //     'name'=>'Juan David Grijalba Osorio',
-        //     'sexo'=> 'M',
-        //     'telefono'=>'314852684',
-        //     'email'=> 'juandavidgo1997@gmail.com',
-        //     'email_verified_at' => now(),            
-        //     'password'=> bcrypt('123123123'),
-        // ])->assignRole('Blogger');
-
-        // User::create([
-        //     'name'=>'Hebron Customer',
-        //     'sexo'=> 'M',
-        //     'telefono'=>'314852684',
-        //     'email'=> 'hebron.customer@gmail.com',
-        //     'email_verified_at' => now(),            
-        //     'password'=> bcrypt('123123123'),
-        // ]);
-
-        // User::factory(9)->create();
     }
 }

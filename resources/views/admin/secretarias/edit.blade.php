@@ -120,7 +120,7 @@
                                 </div>
                                 <div class="col-md-12">
                                     <div class="form-group">
-                                        <a href="{{ route('admin.usuarios.index') }}" class="btn btn-secondary">
+                                        <a href="{{ route('admin.users.index') }}" class="btn btn-secondary">
                                             Cancelar
                                             {{-- <i class="fa-solid fa-plus"></i> --}}
                                         </a>

@@ -23,6 +23,7 @@ class EventController extends Controller
 
     public function store(Request $request)
     {
+        // dd($request->all());
         // Validar los datos de la solicitud
         $request->validate([
             'fecha_reserva' => 'required',
@@ -118,9 +119,12 @@ class EventController extends Controller
     }
 
     public function destroy(Event $event)
-    { // NO ESTA FUNCIONANDO NOTA: RESOLVER
+    {
         $event->delete(); // Cambiar destroy() por delete()
-        return redirect()->back()->with(['info' => 'Se eliminó la reserva de manera correcta','icono' => 'success',]);
+        return redirect()->back()->with([
+            'mensaje' => 'Se eliminó la reserva de manera correcta',
+            'icono' => 'success',
+        ]);
     }
     // public function reportes(){
     //     return view('admin.reservas.reportes');

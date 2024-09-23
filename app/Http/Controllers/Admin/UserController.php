@@ -39,7 +39,7 @@ class UserController extends Controller
         // $usuario->email = $request->email;
         // $usuario->password = Hash::make($request->password);
         // $usuario->save();
-        // return redirect()->route('admin.usuarios.index')
+        // return redirect()->route('admin.users.index')
         //     ->with('info','Se registro al usuario de forma correcta')
         //     ->with('icono','success');
     }
@@ -70,7 +70,7 @@ class UserController extends Controller
         // }
         // $usuario->save();
 
-        // return redirect()->route('admin.usuarios.index')->with('info', 'Usuario actualizado exitosamente')
+        // return redirect()->route('admin.users.index')->with('info', 'Usuario actualizado exitosamente')
         //                                                 ->with('icono','success');
     }
 
@@ -80,6 +80,6 @@ class UserController extends Controller
         $user = User::findOrFail($id);
 
         $user->delete();
-        return redirect()->route('admin.usuarios.index')->with('info', 'La usuario se eliminó con éxito')->with('icono', 'success');
+        return redirect()->route('admin.users.index')->with('info', 'La usuario se eliminó con éxito')->with('icono', 'success');
     }
 }

@@ -31,8 +31,7 @@ class RoleSeeder extends Seeder
 
 
         // Permission::create(['name'=>'admin.home'])->assignRole($admin);
-        Permission::create(['name' => 'admin.home'])->syncRoles([$admin, $blogger, $role3, $role4]);
-        Permission::create(['name' => 'admin.users.index'])->syncRoles([$admin]);
+        Permission::create(['name' => 'admin.home'])->syncRoles([$admin, $secretaria, $doctor, $usuario, $paciente, $blogger, $role3, $role4]);
         Permission::create(['name' => 'admin.users.create'])->syncRoles([$admin]);
         Permission::create(['name' => 'admin.users.update'])->syncRoles([$admin]);
 
@@ -55,7 +54,7 @@ class RoleSeeder extends Seeder
         // Permission::create(['name'=>'admin.home'])->assignRole($admin);
         Permission::create(['name' => 'admin.index']);
         //rutas para el admin
-        Permission::create(['name' => 'admin.usuarios.index'])->syncRoles([$admin]);
+        Permission::create(['name' => 'admin.users.index'])->syncRoles([$admin]);
         Permission::create(['name' => 'admin.usuarios.create'])->syncRoles([$admin]);
         Permission::create(['name' => 'admin.usuarios.store'])->syncRoles([$admin]);
         Permission::create(['name' => 'admin.usuarios.show'])->syncRoles([$admin]);
@@ -96,6 +95,9 @@ class RoleSeeder extends Seeder
         Permission::create(['name' => 'admin.horarios.show'])->syncRoles([$admin, $secretaria]);
         Permission::create(['name' => 'admin.horarios.edit'])->syncRoles([$admin, $secretaria]);
         Permission::create(['name' => 'admin.horarios.destroy'])->syncRoles([$admin, $secretaria]);
+        //----------------------------------------------------------------------------------------
+        Permission::create(['name' => 'admin.horarios.cargar_datos_cosultorios'])->syncRoles([$admin, $secretaria]);
+        Permission::create(['name' => 'admin.horarios.cargar_reserva_doctores'])->syncRoles([$admin, $secretaria]);
         //----------------------------------------------------------------------------------------
         // $admin->permissions()->attach();
 

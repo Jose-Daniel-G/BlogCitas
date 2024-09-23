@@ -4,69 +4,53 @@
 @section('css')
 @stop
 @section('content_header')
-    <h1>Sistema de reservas de citas medicas</h1>
+    <h1>Listado de reservas</h1>
 @stop
 
 @section('content')
-    <div class="row">
-        <h1>Listado de secretarias</h1>
-    </div>
         <div class="row">
         <div class="col-md-12">
             <div class="card card-outline card-primary">
                 <div class="card-header">
-                    <h3 class="card-title">Usuarios registrados</h3>
-                    <div class="card-tools">
-                        <a href="{{ route('admin.secretarias.create') }}" class="btn btn-primary">Registrar
-                            {{-- <i class="fa-solid fa-plus"></i> --}}
-                        </a>
-                    </div>
+                    <h3 class="card-title">Reservas registradas</h3>
                 </div>
 
                 <div class="card-body">
                     @if ($info = Session::get('info'))
                         <div class="alert alert-success"><strong>{{ $info }}</strong></div>
                     @endif
-                    <table id="secretarias" class="table table-striped table-bordered table-hover table-sm">
+                    <table id="reservas" class="table table-striped table-bordered table-hover table-sm">
                         <thead class="thead-dark">
                             <tr>
                                 <th>Nro</th>
-                                <th>Nombres</th>
-                                <th>Apellidos</th>
-                                <th>cc</th>
-                                <th>Celular</th>
-                                <th>Fecha de Nacimiento</th>
-                                <th>Direccion</th>
-                                <th>Email</th>
+                                <th>Doctor</th>
+                                <th>Especialidad</th>
+                                <th>Fecha de reserva</th>
+                                <th>Hora de reserva</th>
+                                <th>Fecha y hora de registro</th>
                                 <th>Acciones</th>
                             </tr>
                         </thead>
                         <tbody>
                             <?php $contador = 1; ?>
-                            @foreach ($secretarias as $secretaria)
+                            @foreach ($eventos as $evento)
                                 <tr>
                                     <td scope="row">{{ $contador++ }}</td>
-                                    <td scope="row">{{ $secretaria->nombres }}</td>
-                                    <td scope="row">{{ $secretaria->apellidos }}</td>
-                                    <td scope="row">{{ $secretaria->cc }}</td>
-                                    <td scope="row">{{ $secretaria->celular }}</td>
-                                    <td scope="row">{{ $secretaria->fecha_nacimiento }}</td>
-                                    <td scope="row">{{ $secretaria->direccion }}</td>
-                                    <td scope="row">{{ $secretaria->user->email }}</td>
+                                    <td scope="row">{{ $evento->doctor->nombres." ".$evento->doctor->apellidos }}</td>
+                                    <td scope="row" class="text-center">{{ $evento->doctor->especialidad }}</td>
+                                    <td scope="row" class="text-center">{{ \Carbon\Carbon::parse($evento->start)->format('Y-m-d') }}</td>
+                                    <td scope="row" class="text-center">{{ \Carbon\Carbon::parse($evento->end)->format('H:i') }}</td>
+                                    <td scope="row" class="text-center">{{ $evento->created_at }}</td>
                                     <td scope="row">
+                                        <a href=""  class="btn btn-info btn-sm">Ver</a>
                                         <div class="btn-group" role="group" aria-label="basic example">
-                                            <a href="{{ route('admin.secretarias.show', $secretaria->id) }}"
-                                                class="btn btn-info btn-sm">Ver</a>
-                                            <a href="{{ route('admin.secretarias.edit', $secretaria->id) }}"
-                                                class="btn btn-success btn-sm">Editar</a>
-                                            <form action="{{ route('admin.secretarias.destroy', $secretaria->id) }}" method="POST"
-                                                onsubmit="return confirm('¿Estás seguro de que deseas eliminar este secretaria?');">
+                                            <form action="{{ route('admin.eventos.destroy',$evento->id)}}" method="POST"
+                                                onsubmit="return confirm('¿Estás seguro de que deseas eliminar este consultorio?');">
                                                 @csrf
                                                 @method('DELETE')
                                                 <button type="submit" class="btn btn-danger">Eliminar</button>
                                             </form>
-
-                                        </div>
+                                            </div>
                                     </td>
                                 </tr>
                             @endforeach
@@ -91,7 +75,8 @@
     <script src="https://cdn.datatables.net/buttons/2.3.0/js/buttons.print.min.js"></script>
     <script src="https://cdn.datatables.net/buttons/2.3.0/js/buttons.colVis.min.js"></script>
     <script>
-        new DataTable('#secretarias', {
+        
+        new DataTable('#reservas', {
             responsive: true,
             autoWidth: false, //no le vi la funcionalidad
             dom: 'Bfrtip', // Añade el contenedor de botones
@@ -101,12 +86,12 @@
             "language": {
                 "decimal": "",
                 "emptyTable": "No hay datos disponibles en la tabla",
-                "info": "Mostrando _START_ a _END_ de _TOTAL_ secretarias",
-                "infoEmpty": "Mostrando 0 a 0 de 0 secretarias",
-                "infoFiltered": "(filtrado de _MAX_ secretarias totales)",
+                "info": "Mostrando _START_ a _END_ de _TOTAL_ reservas",
+                "infoEmpty": "Mostrando 0 a 0 de 0 reservas",
+                "infoFiltered": "(filtrado de _MAX_ reservas totales)",
                 "infoPostFix": "",
                 "thousands": ",",
-                "lengthMenu": "Mostrar _MENU_ secretarias",
+                "lengthMenu": "Mostrar _MENU_ reservas",
                 "loadingRecords": "Cargando...",
                 "processing": "",
                 "search": "Buscar:",
