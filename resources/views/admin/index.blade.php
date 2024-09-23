@@ -374,8 +374,8 @@
                     type: 'GET',
                     dataType: 'json',
                     success: function(data) {
-                        // calendar.addEventSource(data);
-                        $('#doctor_info').html(data);
+                        calendar.addEventSource(data);
+                        // $('#doctor_info').html(data);
                     },
                     error: function() {
                         alert('Error al obtener datos del doctor');

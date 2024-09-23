@@ -30,8 +30,8 @@ class WebController extends Controller
     }
 
     public function cargar_reserva_doctores($id)
-    { 
-        try {
+    { //echo $id;
+        try { 
             $eventos = Event::where('doctor_id', $id)->get();
                     // ->select('id','title', DB::raw('DATE_FORMAT(start, %Y-%m-%d) as start'),DB::raw('DATE_FORMAT(end, %Y-%m-%d) as end'),'color')
                     // ->get();
