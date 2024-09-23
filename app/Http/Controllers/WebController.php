@@ -15,7 +15,7 @@ class WebController extends Controller
     {
 
         $consultorios = Consultorio::all();
-        // return view('index', compact('consultorios'));
+        return view('index', compact('consultorios'));
     }
 
     public function cargar_datos_consultorios($id)
