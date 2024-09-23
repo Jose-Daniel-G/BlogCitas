@@ -60,15 +60,16 @@ usuario
  - curso_id
 
 
- ## Crear servidor local
+ ## CREATE LOCAL SERVER CON XAMMP
   como administrador habre este documento
   - C:\Windows\System32\drivers\etc\hosts
-  en el archivo adiccionar el host
+   `` adicionar estas lineas `` 
   - 127.0.0.1 laravel9.test
 
   luego dirigirse a esta ruta y editar el siguiente archivo
   - C:\xampp\apache\conf\extra\httpd-vhosts.conf
   adicionar estas lineas 
+    ```
     <VirtualHost *:80>
         ServerName localhost
         DocumentRoot "/xampp/htdocs"
@@ -77,15 +78,39 @@ usuario
     <VirtualHost *:80>
         ServerName laravel9.test
         DocumentRoot "/xampp/htdocs/www/laravel/public"
-    </VirtualHost>                     # RUTA 
+    </VirtualHost>
+    ```                    # RUTA 
 
-php artisan storage:link
+### FILES ROUTE
+ -php artisan storage:link
 
+### CLEAN GRABAGE
+ ```
 php artisan cache:clear
 php artisan config:clear
 php artisan view:clear
 php artisan route:clear
-
+php artisan view:clear
+ ```
+###### INSTALL LANGUAGE
+ ```
 composer require laravel-lang/common
 php artisan lang:add es
 php artisan lang:update
+ ```
+# -------------------------
+- composer dump-autoload
+- git rm --cached DB_HEBRON.jpg
+
+- npm install jquery
+# -------------------------
+php artisan adminlte:plugins
+php artisan adminlte:plugins install --plugin=sweetalert2
+php artisan adminlte:plugins install --plugin=fullcalendar
+php artisan adminlte:plugins install --plugin=datatables
+npm install jquery-ui
+
+#### EN EL ARCHIO APP.JS PONER 
+- import Swal from 'sweetalert2
+- import 'jquery-ui/ui/widgets/datepicker'; // El widget de datepicker
+

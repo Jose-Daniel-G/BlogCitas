@@ -292,6 +292,24 @@
 @section('js')
     <script src='https://cdn.jsdelivr.net/npm/fullcalendar@6.1.15/index.global.min.js'></script>
     <script>
+        Swal.fire({
+            title: '¿Estás seguro?',
+            text: 'No podrás revertir esto.',
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonText: 'Sí, eliminar',
+            cancelButtonText: 'Cancelar'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                Swal.fire(
+                    'Eliminado!',
+                    'Tu archivo ha sido eliminado.',
+                    'success'
+                );
+            }
+        });
+    </script>
+    <script>
         document.addEventListener('DOMContentLoaded', function() {
             //-------------------------------------------------------------
             // VALIDAR SI LA FECHA YA NO HA PASADO
@@ -331,7 +349,6 @@
             })
         });
     </script>
-
     <script>
         // carga contenido de tabla en  consultorio_info
         $('#consultorio_select').on('change', function() {

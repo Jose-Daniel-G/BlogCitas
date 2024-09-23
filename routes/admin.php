@@ -14,15 +14,14 @@ use App\Http\Controllers\ConsultorioController;
 use App\Http\Controllers\DoctorController;
 
 // use App\Http\Controllers\UsuarioController;
-
 // use App\Http\Controllers\ClaseController;
 // use App\Http\Controllers\CursoController;
 
-Route::get("/", [HomeController::class, "index"])->name("admin.home");
+Route::get("/", [HomeController::class, "index"])->name("admin.home")->middleware('can:admin.home');
 Route::resource('users', UserController::class)->only(['index', 'edit', 'update'])->names('admin.users');
 
-Route::resource('categories', CategoryController::class)->names('admin.categories');
-Route::resource('tags', TagController::class)->names('admin.tags');
+Route::resource('categories', CategoryController::class)->except('show')->names('admin.categories');
+Route::resource('tags', TagController::class)->except('show')->names('admin.tags');
 Route::resource('posts', PostController::class)->names('admin.posts');
 
 // Route::resource('cursos', CursoController::class)->names('admin.cursos');
