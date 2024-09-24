@@ -11,6 +11,7 @@ use App\Models\Paciente;
 use App\Models\Secretaria;
 use App\Models\User;
 use App\Http\Controllers\Controller;
+use App\Models\Config;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -23,10 +24,11 @@ class HomeController extends Controller
         $total_doctores = Doctor::count();
         $total_horarios = Horario::count();
         $total_eventos = CalendarEvent::count();
+        $total_configuraciones = Config::count();
         
         $consultorios = Consultorio::all();
         $doctores =Doctor::all();
         $eventos = CalendarEvent::all();
-        return view('admin.index', compact('total_usuarios', 'total_secretarias', 'total_pacientes', 'total_consultorios', 'total_doctores', 'total_horarios','total_eventos','consultorios', 'doctores', 'eventos'));
+        return view('admin.index', compact('total_usuarios', 'total_secretarias', 'total_pacientes', 'total_consultorios', 'total_doctores', 'total_horarios','total_eventos','consultorios', 'doctores', 'eventos','total_configuraciones'));
     }
 }

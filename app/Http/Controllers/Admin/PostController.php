@@ -40,7 +40,7 @@ class PostController extends Controller
 
         $file = $request->file('file');
         if (!empty($file)) {
-            $nombre =  time() . "_" . $file->getClientOriginalName();$imagenes = $file->storeAs('public/uploads', $nombre);
+            $nombre =  time() . "_" . $file->getClientOriginalName();$imagenes = $file->storeAs('public/logos', $nombre);
             $url = Storage::url($imagenes);
             $post->image()->create([ 'url' => $url]);
         }

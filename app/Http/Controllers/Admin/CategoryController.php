@@ -32,7 +32,7 @@ class CategoryController extends Controller
         $this->validate($request, ["name"=> "required","slug"=> "required|unique:categories",]);
 
         $category = Category::create($request->all());
-        return redirect()->route('admin.categories.edit', $category)->with('info','La categoría se creó con éxito');
+        return redirect()->route('admin.categories.index', $category)->with('info','La categoría se creó con éxito');
     }
 
     // public function show(Category $category)

@@ -19,7 +19,10 @@ class DoctorController extends Controller
     { 
         return view('admin.doctores.create');
     }
-
+    public function reportes()
+    {
+        //
+    }
     public function store(Request $request)
     {
         // dd($request->all());
@@ -96,6 +99,7 @@ class DoctorController extends Controller
 
     public function destroy(Doctor $doctor)
     {
+        // dd($doctor);
         // Verificar si el doctor tiene un usuario asociado
         if ($doctor->user) {
             // Si existe un usuario asociado, eliminarlo

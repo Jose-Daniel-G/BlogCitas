@@ -327,14 +327,32 @@ return [
         [
             'text'        => 'Configuraciones',
             'route'         => 'admin.config.index',
-            'icon' => 'fas fa-fw fa-user',
-            'can'  => 'admin.config.index',
+            'icon' => 'fas fa-sync-alt',
+            // 'can'  => 'admin.config.index',
+            'submenu' => [
+                [
+                    'text' => 'Crear configuracion',
+                    'icon'        => 'far fa-circle nav-icon',
+                    'route' => 'admin.config.create',
+                ],
+                [
+                    'text' => 'Listado de configuracion',
+                    'icon'        => 'far fa-circle nav-icon',
+                    'route' => 'admin.config.index',
+                ],
+            ],
         ],
         [
             'text'        => 'Usuarios',
             'route'         => 'admin.users.index',
             'icon' => 'fas fa-fw fa-user',
             'can'  => 'admin.users.index',
+        ],
+        [
+            'text'        => 'Reportes',
+            'route'         => 'admin.reportes.index',
+            'icon' => 'fas fa-fw fa-user',
+            'can'  => 'admin.reportes.index',
         ],
         ['header' => 'ADMINISTRADOR', 'can' => 'admin.secretarias.index',],
         [

@@ -31,7 +31,7 @@ class UserSeeder extends Seeder
             'email_verified_at' => now(),
             'password' => bcrypt('123123123'),
         ])->assignRole('admin');
-
+        //------------SECRETARIA---------------
         User::create([
             'name' => 'Secretaria',
             'email' => 'secretaria@email.com',
@@ -48,6 +48,7 @@ class UserSeeder extends Seeder
             'direccion' => 'calle 5 o este',
             'user_id' => '3',
         ]);
+        //-------------------------------------
         User::create([
             'name' => 'Doctor',
             'email' => 'doctor@email.com',
@@ -92,18 +93,17 @@ class UserSeeder extends Seeder
             'especialidad' => 'FISIOTERAPIA',
             'user_id' => '6',
         ]);
-        //--------------------------------------------]
+        //------------- USUARIOS ----------------]
         User::create([
             'name' => 'Fancisco Antonio Grijalba Osorio', // 'sexo'=> 'M', 'telefono'=>'314852684',
             'email' => 'francisco.grijalba@email.com',
             'email_verified_at' => now(),
             'password' => bcrypt('123123123'),
-        ])->assignRole('admin');
+        ])->assignRole('usuario');
 
         User::create([
             'name' => 'Juan David Grijalba Osorio',
-            // 'sexo'=> 'M',
-            // 'telefono'=>'314852685',
+            // 'sexo'=> 'M','telefono'=>'314852685',
             'email' => 'juandavidgo1997@email.com',
             'email_verified_at' => now(),
             'password' => bcrypt('123123123'),

@@ -18,18 +18,13 @@
             <div class="col-lg-3 col-6">
                 <div class="small-box bg-info">
                     <div class="inner">
-                        <h3>{{ $total_usuarios }}</h3>
+                        <h3>{{ $total_configuraciones }}</h3>
                         <p>Configuracion</p>
                     </div>
-                    <div class="icon">
-                        <ion-icon name="settings-outline"></ion-icon>
-                    </div>
-                    <a href="{{ route('admin.users.index') }}" class="small-box-footer"><i
-                            class="fas fa-sync-alt"></i></a>
+                    <a href="{{ route('admin.config.index') }}" class="small-box-footer"><i class="fas fa-sync-alt"></i></a>
                 </div>
             </div>
         @endcan
-    <div class="row">
         @can('admin.users.index')
             <div class="col-lg-3 col-6">
                 <div class="small-box bg-info">
@@ -38,7 +33,7 @@
                         <p>Usuarios</p>
                     </div>
                     <div class="icon">
-                        <i class="ion fas bi bi-file-person"></i>
+                        <i class="ion ion-bag"></i>
                     </div>
                     <a href="{{ route('admin.users.index') }}" class="small-box-footer">Mas informacion <i
                             class="fas fa-arrow-circle-right"></i></a>
@@ -47,7 +42,6 @@
         @endcan
         @can('admin.secretarias.index')
             <div class="col-lg-3 col-6">
-                <!-- small box -->
                 <div class="small-box bg-success">
                     <div class="inner">
                         <h3>{{ $total_secretarias }}
@@ -126,6 +120,7 @@
                 </div>
             </div>
         @endcan
+
         {{-- @can('admin.reservas.index') --}}
             <div class="col-lg-3 col-6">
                 <div class="small-box bg-secondary">
@@ -326,24 +321,7 @@
 
 @section('js')
     <script src='https://cdn.jsdelivr.net/npm/fullcalendar@6.1.15/index.global.min.js'></script>
-    <script>
-        Swal.fire({
-            title: '¿Estás seguro?',
-            text: 'No podrás revertir esto.',
-            icon: 'warning',
-            showCancelButton: true,
-            confirmButtonText: 'Sí, eliminar',
-            cancelButtonText: 'Cancelar'
-        }).then((result) => {
-            if (result.isConfirmed) {
-                Swal.fire(
-                    'Eliminado!',
-                    'Tu archivo ha sido eliminado.',
-                    'success'
-                );
-            }
-        });
-    </script>
+
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             //-------------------------------------------------------------
