@@ -138,7 +138,7 @@
             </div>
         {{-- @endcan --}}
     </div>
-    @can('admin.horarios.cargar_datos_cosultorios')
+    @can('cargar_datos_cosultorios')
         <div class="row">
             <div class="col-md-12">
                 <div class="card card-outline card-primary">
@@ -395,7 +395,7 @@
                 events: []
             });
 
-            var url = "{{ route('admin.horarios.cargar_reserva_doctores', ':id') }}";
+            var url = "{{ route('cargar_reserva_doctores', ':id') }}";
             url = url.replace(':id', doctor_id);
             // alert('hey '+doctor_id)
             if (doctor_id) {

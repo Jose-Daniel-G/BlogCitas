@@ -2,9 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Config;
 use App\Models\Doctor;
+use App\Models\Event;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Barryvdh\DomPDF\Facade\Pdf;
 use Illuminate\Support\Facades\Hash;
 
 class DoctorController extends Controller
@@ -16,13 +20,10 @@ class DoctorController extends Controller
     }
 
     public function create()
-    { 
+    {
         return view('admin.doctores.create');
     }
-    public function reportes()
-    {
-        //
-    }
+
     public function store(Request $request)
     {
         // dd($request->all());
@@ -44,11 +45,11 @@ class DoctorController extends Controller
         // Crear un nuevo doctor
         $data = $request->all();
         $data['user_id'] = auth()->id();
-    
+
         // Crea el nuevo doctor
         Doctor::create($data);
         $usuario->assignRole('doctor');
-    
+
 
         return redirect()->route('admin.doctores.index')
             ->with('info', 'Se registro el doctor de forma correcta')
@@ -86,32 +87,50 @@ class DoctorController extends Controller
         // acrualiza un nuevo doctor
         $data = $request->all();
         $data['user_id'] = auth()->id();
-    
+
         // Crea el nuevo doctor
         $doctor->update($data);
-    
-    
+
+
         return redirect()->route('admin.doctores.index')
             ->with('info', 'Doctor actualizado correctamente.')
             ->with('icono', 'success');
     }
-    
+
 
     public function destroy(Doctor $doctor)
     {
         // dd($doctor);
-        // Verificar si el doctor tiene un usuario asociado
         if ($doctor->user) {
-            // Si existe un usuario asociado, eliminarlo
-            $doctor->user->delete();
+            $doctor->user->delete(); // Si el doctor tiene un usuario asociado, eliminarlo
         }
-    
+
         // Eliminar el doctor
         $doctor->delete();
-    
+
         return redirect()->route('admin.doctores.index')
             ->with('info', 'El doctor se eliminó con éxito')
             ->with('icono', 'success');
     }
-    
+    public function reportes()
+    {
+        return view('admin.doctores.reportes');
+    }
+    public function pdf()
+    {
+        $config = Config::latest()->first();
+        $doctores = Doctor::all();
+        // dd($doctores);
+        $pdf = PDF::loadView('admin.doctores.pdf', compact('config', 'doctores'));
+
+        // Incluir la numeración de páginas y el pie de página
+        $pdf->output();
+        $dompdf = $pdf->getDomPDF();
+        $canvas = $dompdf->getCanvas();
+        $canvas->page_text(20, 800, "Impreso por: " . Auth::user()->email, null, 10, array(0, 0, 0));
+        $canvas->page_text(270, 800, "Página {PAGE_NUM} de {PAGE_COUNT}", null, 10, array(0, 0, 0));
+        $canvas->page_text(450, 800, "Fecha: " . \Carbon\Carbon::now()->format('d/m/Y') . " - " . \Carbon\Carbon::now()->format('H:i:s'), null, 10, array(0, 0, 0));
+
+        return $pdf->stream();
+    }
 }

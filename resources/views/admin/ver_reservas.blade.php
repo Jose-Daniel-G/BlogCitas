@@ -44,7 +44,7 @@
                                     <td scope="row">
                                         <a href=""  class="btn btn-info btn-sm">Ver</a>
                                         <div class="btn-group" role="group" aria-label="basic example">
-                                            <form action="{{ route('admin.eventos.destroy',$evento->id)}}" method="POST"
+                                            <form action="{{ route('admin.eventos.destroy', $evento->doctor->id)}}" method="POST"
                                                 onsubmit="return confirm('¿Estás seguro de que deseas eliminar este consultorio?');">
                                                 @csrf
                                                 @method('DELETE')

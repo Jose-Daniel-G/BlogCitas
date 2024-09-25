@@ -91,12 +91,19 @@ php artisan config:clear
 php artisan view:clear
 php artisan route:clear
 php artisan view:clear
+php artisan route:clear
  ```
 ###### INSTALL LANGUAGE
  ```
 composer require laravel-lang/common
 php artisan lang:add es
 php artisan lang:update
+ ```
+ ###### INSTALL PDF
+ ```
+ composer require barrivdh/laravel-dompdf
+ php artisan vendor:publish --provider="Barryvdh\DomPDF\ServiceProvider"
+ - optional if doesn't leave: composer clear-cache
  ```
 # -------------------------
 - composer dump-autoload

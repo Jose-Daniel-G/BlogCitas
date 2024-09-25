@@ -110,7 +110,7 @@ return [
     */
 
     'preloader' => [
-        'enabled' => true,
+        'enabled' => false,
         'img' => [
             'path' => 'vendor/adminlte/dist/img/HEBRON.png',
             'alt' => 'HEBRON',
@@ -348,12 +348,7 @@ return [
             'icon' => 'fas fa-fw fa-user',
             'can'  => 'admin.users.index',
         ],
-        [
-            'text'        => 'Reportes',
-            'route'         => 'admin.reportes.index',
-            'icon' => 'fas fa-fw fa-user',
-            'can'  => 'admin.reportes.index',
-        ],
+
         ['header' => 'ADMINISTRADOR', 'can' => 'admin.secretarias.index',],
         [
             'text' => 'Secretarias',
@@ -423,6 +418,11 @@ return [
                     'text' => 'Listado de doctores',
                     'icon'        => 'far fa-circle nav-icon',
                     'route' => 'admin.doctores.index',
+                ],
+                [
+                    'text'        => 'Reportes',
+                    'icon'        => 'far fa-circle nav-icon',
+                    'route' => 'admin.doctores.reportes',
                 ],
 
             ],

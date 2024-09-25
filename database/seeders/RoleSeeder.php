@@ -101,20 +101,28 @@ class RoleSeeder extends Seeder
         Permission::create(['name' => 'admin.doctores.show'])->syncRoles([$admin, $secretaria]);
         Permission::create(['name' => 'admin.doctores.edit'])->syncRoles([$admin, $secretaria]);
         Permission::create(['name' => 'admin.doctores.destroy'])->syncRoles([$admin, $secretaria]);
-        Permission::create(['name' => 'admin.doctores.destroy'])->syncRoles([$admin, $secretaria]);
+        Permission::create(['name' => 'admin.doctores.pdf'])->syncRoles([$admin, $secretaria]);
         Permission::create(['name' => 'admin.doctores.reportes'])->syncRoles([$admin, $secretaria]);
+
         //rutas para el admin - horarios
         Permission::create(['name' => 'admin.horarios.index'])->syncRoles([$admin, $secretaria]);
         Permission::create(['name' => 'admin.horarios.create'])->syncRoles([$admin, $secretaria]);
         Permission::create(['name' => 'admin.horarios.store'])->syncRoles([$admin, $secretaria]);
         Permission::create(['name' => 'admin.horarios.show'])->syncRoles([$admin, $secretaria]);
         Permission::create(['name' => 'admin.horarios.edit'])->syncRoles([$admin, $secretaria]);
-        
+
         //----------------------------------------------------------------------------------------
-        Permission::create(['name' => 'admin.horarios.cargar_datos_cosultorios'])->syncRoles([$admin, $secretaria, $usuario]);
-        Permission::create(['name' => 'admin.horarios.cargar_reserva_doctores'])->syncRoles([$admin, $secretaria, $usuario]);
-        Permission::create(['name' => 'admin.ver_reservas'])->syncRoles([$admin, $secretaria, $usuario]);
+        Permission::create(['name' => 'cargar_datos_cosultorios'])->syncRoles([$admin, $usuario]);
+        Permission::create(['name' => 'cargar_reserva_doctores'])->syncRoles([$admin, $usuario]);
+        Permission::create(['name' => 'admin.ver_reservas'])->syncRoles([$admin, $usuario]);
+        Permission::create(['name' => 'admin.eventos'])->syncRoles([$admin, $usuario]);
         //----------------------------------------------------------------------------------------
+
+        //RUTAS PARA LAS RESERVAS
+        Permission::create(['name'=>'admin.reservas.reportes'])->syncRoles([$admin]);
+        Permission::create(['name'=>'admin.reservas.pdf'])->syncRoles([$admin]);
+        Permission::create(['name'=>'admin.reservas.pdf_fechas'])->syncRoles([$admin]);
+
         // $admin->permissions()->attach();
 
         // //VEHICULOS
