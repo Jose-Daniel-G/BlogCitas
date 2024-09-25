@@ -445,7 +445,12 @@ return [
 
             ],
         ],
-
+        [
+            'text'        => 'Reservas',
+            'route'         => 'admin.reservas.reportes',
+            'icon' => 'fas fa-envelope',
+            // 'can'  => 'admin.reservas.reportes',
+        ],
         // =====================================================================
         // [
         //     'text' => 'Clases',
