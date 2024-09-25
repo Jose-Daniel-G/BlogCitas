@@ -9,7 +9,7 @@
     @section('content')
 
         <div class="row">
-            <h1>Actualizacion consultorio: {{ $consultorio->nombre }} {{ $consultorio->ubicacion }}</h1>
+            <h1>Actualizacion pago: {{ $pago->paciente->nombres . ' ' . $pago->paciente->apellidos }}</h1>
 
         </div>
         <div class="row">
@@ -20,102 +20,93 @@
                     </div>
 
                     <div class="card-body">
-                        <form action="{{ route('admin.consultorios.update', $consultorio->id) }}" method="POST"
-                            autocomplete="off">
+                        <form action="{{ route('admin.pagos.update', $pago->id) }}" method="POST" autocomplete="off">
                             @csrf
                             @method('PUT')
 
                             <div class="row">
-                                <div class="col-md-3">
+                                <div class="col-md-6">
                                     <div class="form-group">
-                                        <label for="nombre">Nombre del consultorio </label><b>*</b>
-                                        <input type="text" class="form-control" name="nombre"
-                                            value="{{ $consultorio->nombre }}" required>
+                                        <label for="nombre">Paciente</label><b>*</b>
+                                        <select name="paciente_id" id="" class="form-control">
+                                            @foreach ($pacientes as $paciente)
+                                                <option value="{{ $paciente->id }}"
+                                                    {{ $paciente->id == $pago->paciente_id ? 'selected' : '' }}>
+                                                    {{ $paciente->apellidos . ' ' . $paciente->nombre }}</option>
+                                            @endforeach
+                                        </select>
                                         @error('nombre')
                                             <small class="bg-danger text-white p-1">{{ $message }}</small>
                                         @enderror
                                     </div>
                                 </div>
-                                <div class="col-md-3">
-                                    <div class="form-group">
-                                        <label for="ubicacion">Ubicacion </label><b>*</b>
-                                        <input type="text" class="form-control" name="ubicacion"
-                                            value="{{ $consultorio->ubicacion }}" required>
-                                        @error('ubicacion')
-                                            <small class="bg-danger text-white p-1">{{ $message }}</small>
-                                        @enderror
-                                    </div>
-                                </div>
-                                <div class="col-md-3">
-                                    <div class="form-group">
-                                        <label for="capacidad">Capacidad </label><b>*</b>
-                                        <input type="text" class="form-control" name="capacidad"
-                                            value="{{ $consultorio->capacidad }}" required>
-                                        @error('capacidad')
-                                            <small class="bg-danger text-white p-1">{{ $message }}</small>
-                                        @enderror
-                                    </div>
-                                </div>
-                                <div class="col-md-3">
-                                    <div class="form-group">
-                                        <label for="telefono">Telefono </label><b>*</b>
-                                        <input type="text" class="form-control" name="telefono"
-                                            value="{{ $consultorio->telefono }}" required>
-                                        @error('telefono')
-                                            <small class="bg-danger text-white p-1">{{ $message }}</small>
-                                        @enderror
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="row">
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label for="especialidad">Especialidad </label><b>*</b>
-                                        <input type="text" class="form-control" name="especialidad"
-                                            value="{{ $consultorio->especialidad }}" required>
-                                        @error('especialidad')
+                                        <label for="nombre">Doctores</label><b>*</b>
+                                        <select name="doctor_id" id="" class="form-control">
+                                            @foreach ($doctores as $doctor)
+                                                <option value="{{ $doctor->id }}"
+                                                    {{ $doctor->id == $pago->doctor_id ? 'selected' : '' }}>
+                                                    {{ $doctor->apellidos . ' ' . $doctor->nombre }}</option>
+                                                </option>
+                                            @endforeach
+                                        </select>
+                                        @error('nombre')
                                             <small class="bg-danger text-white p-1">{{ $message }}</small>
                                         @enderror
                                     </div>
                                 </div>
 
+                            </div>
+                            <div class="row">
+
                                 <div class="col-md-3">
                                     <div class="form-group">
-                                        <label for="estado">Estado </label><b>*</b>
-                                        <select name="estado" id="" class="form-control" name="estado">
-                                            <!-- Opción por defecto -->
-                                            @if ($consultorio->estado == 'A')
-                                                <option value="A">Activo</option>
-                                                <option value="I">Inactivo</option>
-                                            @else
-                                                <option value="I">Inactivo</option>
-                                                <option value="A">Activo</option>
-                                            @endif
-
-                                        </select>
+                                        <label for="fecha_pago">Fecha de pago </label><b>*</b>
+                                        <input type="date" class="form-control" name="fecha_pago"
+                                            value="{{ $pago->fecha_pago }}" required>
+                                        @error('fecha_pago')
+                                            <small class="bg-danger text-white p-1">{{ $message }}</small>
+                                        @enderror
                                     </div>
                                 </div>
-
-                            </div>
-
-
-                            <div class="row">
-                                <div class="col-md-12">
+                                <div class="col-md-3">
                                     <div class="form-group">
-                                        <a href="{{ route('admin.consultorios.index') }}" class="btn btn-secondary">
-                                            Regresar
-                                            {{-- <i class="fa-solid fa-plus"></i> --}}
-                                        </a>
-                                        <button type="submit" class="btn btn-primary">Actualizar consultorio</button>
+                                        <label for="monto">Monto </label><b>*</b>
+                                        <input type="text" class="form-control" name="monto"
+                                            value="{{ $pago->monto }}" required>
+                                        @error('monto')
+                                            <small class="bg-danger text-white p-1">{{ $message }}</small>
+                                        @enderror
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="descripcion">Descripcion </label><b>*</b>
+                                        <input type="text" class="form-control" name="descripcion"
+                                            value="{{ $pago->descripcion }}" required>
+                                        @error('descripcion')
+                                            <small class="bg-danger text-white p-1">{{ $message }}</small>
+                                        @enderror
                                     </div>
                                 </div>
                             </div>
-                        </form>
-
+                    </div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <a href="{{ route('admin.pagos.index') }}" class="btn btn-secondary">
+                                Cancelar
+                                {{-- <i class="fa-solid fa-plus"></i> --}}
+                            </a>
+                            <button type="submit" class="btn btn-primary">Actualizar pago</button>
+                        </div>
                     </div>
-                </div>
+                    </form>
 
+                </div>
             </div>
+
+        </div>
         </div>
     @stop
 

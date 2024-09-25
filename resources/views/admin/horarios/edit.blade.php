@@ -28,7 +28,7 @@
                                     <div class="form-group">
                                         <label for="doctor_id">Doctores </label><b>*</b>
                                         <select class="form-control" name="doctor_id" id="doctor_id">
-                                            <option value="" selected disabled>Seleccione una opción</option>
+                                            {{-- <option value="" selected disabled>Seleccione una opción</option> --}}
                                             @foreach ($doctores as $doctor)
                                                 <option value="{{ $doctor->id }}">
                                                     {{ $doctor->nombres . ' ' . $doctor->apellidos }}</option>
