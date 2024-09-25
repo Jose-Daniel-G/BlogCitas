@@ -117,7 +117,7 @@ class DoctorController extends Controller
     {
         return view('admin.doctores.reportes');
     }
-    public function pdf()
+    public function pdf($id)
     {
         $config = Config::latest()->first();
         $doctores = Doctor::all();

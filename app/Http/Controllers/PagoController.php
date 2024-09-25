@@ -5,14 +5,20 @@ namespace App\Http\Controllers;
 use App\Models\Doctor;
 use App\Models\Paciente;
 use App\Models\Pago;
+use Barryvdh\DomPDF\Facade\Pdf;
 use Illuminate\Http\Request;
+use App\Models\Config;
+use Endroid\QrCode\QrCode;
+use Endroid\QrCode\Writer\PngWriter;
+use Illuminate\Support\Facades\Auth;
 
 class PagoController extends Controller
 {
     public function index()
     {
         $pagos = Pago::all();
-        return view('admin.pagos.index', compact('pagos'));
+        $total_monto = Pago::sum('monto');
+        return view('admin.pagos.index', compact('pagos', 'total_monto'));
     }
 
     public function create()
@@ -73,10 +79,38 @@ class PagoController extends Controller
     public function destroy(Pago $pago)
     {
         // dd($doctor);
-            $pago->paciente->delete();
+        $pago->paciente->delete();
 
         return redirect()->route('admin.pagos.index')
             ->with('info', 'El pago se eliminó con éxito')
             ->with('icono', 'success');
+    }
+    public function pdf($id)
+    {   //echo $id;
+        $config = Config::latest()->first();
+        // Obtener el pago específico según el ID
+        $pago = Pago::with('paciente', 'doctor')->findOrFail($id);
+
+        $data = "Codigo de serguridad del comprobante de pago del paciente "
+            . $pago->paciente->apellido . " " . $pago->paciente->nombres . " en fecha "
+            . $pago->fecha_pago . " con el monto de " . $pago->monto;
+
+        //GENEREAR EL CODIGOQR    
+        $qrCode = new QrCode($data);
+        $writer = new PngWriter($data);
+        $result = $writer->write($qrCode);
+        $qrCodeBase64 = base64_encode($result->getString());
+            
+        // dd($doctores);
+        $pdf = Pdf::loadView('admin.pagos.pdf', compact('config', 'pago','qrCodeBase64'));
+
+        // Incluir la numeración de páginas y el pie de página
+        $pdf->output();
+        $dompdf = $pdf->getDomPDF();
+        $canvas = $dompdf->getCanvas();
+        $canvas->page_text(20, 800, "Impreso por: " . Auth::user()->email, null, 10, array(0, 0, 0));
+        $canvas->page_text(270, 800, "Página {PAGE_NUM} de {PAGE_COUNT}", null, 10, array(0, 0, 0));
+        $canvas->page_text(450, 800, "Fecha: " . \Carbon\Carbon::now()->format('d/m/Y') . " - " . \Carbon\Carbon::now()->format('H:i:s'), null, 10, array(0, 0, 0));
+        return $pdf->stream();
     }
 }

@@ -116,6 +116,7 @@ php artisan lang:update
 ```
 composer require barrivdh/laravel-dompdf
 php artisan vendor:publish --provider="Barryvdh\DomPDF\ServiceProvider"
+composer require endroid/qr-code
 - optional if doesn't leave: composer clear-cache
 ```
 
@@ -142,3 +143,4 @@ npm install jquery-ui
 <i class="fas fa-eye"></i>
 <i class="fas fa-edit"></i>
 <i class="fas fa-trash"></i>
+HABILITAR EXTENCION EN PHP.INI Xampp u otro: extension=gd

@@ -54,7 +54,7 @@
                                             <a href="{{ route('admin.usuarios.show', $usuario->id) }}"
                                                 class="btn btn-info btn-sm"><i class="fas fa-eye"></i>
 </a>
-                                            <a href="{{ route('admin.usuarios.edit', $usuario->id) }}"
+                                            <a href="{{ route('admin.pagos.edit', $usuario->id) }}"
                                                 class="btn btn-success btn-sm"><i class="fas fa-edit"></i>
                                                 </a>
                                             <form action="{{ route('admin.usuarios.destroy', $usuario->id) }}" method="POST"

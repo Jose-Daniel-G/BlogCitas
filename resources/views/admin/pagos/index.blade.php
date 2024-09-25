@@ -50,6 +50,9 @@
                                             <a href="{{ route('admin.pagos.show', $pago->id) }}"
                                                 class="btn btn-info btn-sm"><i class="fas fa-eye"></i>
                                             </a>
+                                            <a href="{{ route('admin.pagos.pdf', $pago->id) }}"
+                                                class="btn btn-warning btn-sm"> <i class="fas fa-print"></i>
+                                            </a>
                                             <a href="{{ route('admin.pagos.edit', $pago->id) }}"
                                                 class="btn btn-success btn-sm"> <i class="fas fa-edit"></i>
                                             </a>
@@ -67,6 +70,8 @@
                             @endforeach
                         </tbody>
                     </table>
+                    <hr>
+                    <h4>Resumen total del monto de pagos: {{ $total_monto }}</h4>
                 </div>
             </div>
         </div>

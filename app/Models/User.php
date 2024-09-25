@@ -45,14 +45,15 @@ class User extends Authenticatable implements MustVerifyEmail
     }
     // Relacion Uno a Muchos
     public function posts(){ return $this->hasMany(Post::class);}
+
     public function secretarias()
     {
-        return $this->hasMany(Secretaria::class);
+        return $this->hasOne(Secretaria::class);
     }
-    // public function pacientes()
-    // {
-    //     return $this->hasMany(Paciente::class);
-    // }
+    public function pacientes()
+    {
+        return $this->hasOne(Paciente::class);
+    }
     public function doctor()
     {
         return $this->hasOne(Doctor::class);

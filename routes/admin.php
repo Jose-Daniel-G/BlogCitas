@@ -51,7 +51,8 @@ Route::resource('/pacientes', PacienteController::class)->names('admin.pacientes
 Route::resource('/consultorios', ConsultorioController::class)->names('admin.consultorios')->middleware('auth', 'can:admin.consultorios');
 
 //RUTAS REPORTES DOCTORES ADMIN
-Route::get('/doctores/pdf', [DoctorController::class, 'reportes'])->name('admin.doctores.pdf')->middleware('auth', 'can:admin.doctores.pdf');
+Route::get('/doctores/pdf/{id}', [DoctorController::class, 'reportes'])->name('admin.doctores.pdf');
+// ->middleware('auth', 'can:admin.doctores.pdf');
 Route::get('/doctores/reportes', [DoctorController::class, 'reportes'])->name('admin.doctores.reportes')->middleware('auth', 'can:admin.doctores.reportes');
 Route::resource('/doctores', DoctorController::class)->names('admin.doctores')->parameters(['doctores' => 'doctor'])->middleware('auth', 'can:admin.doctores');
 
@@ -63,7 +64,7 @@ Route::resource('/eventos/create', EventController::class)->names('admin.eventos
 
 //RUTAS para las reservas
 Route::get('/reservas/reportes', [EventController::class, 'reportes'])->name('admin.reservas.reportes')->middleware('auth', 'can:admin.reservas.reportes');
-Route::get('/reservas/pdf', [EventController::class, 'pdf'])->name('admin.reservas.pdf')->middleware('auth', 'can:admin.reservas.pdf');
+Route::get('/reservas/pdf/{id}', [EventController::class, 'pdf'])->name('admin.reservas.pdf')->middleware('auth', 'can:admin.reservas.pdf');
 Route::get('/reservas/pdf_fechas', [EventController::class, 'pdf_fechas'])->name('admin.reservas.pdf_fechas')->middleware('auth', 'can:admin.event.pdf_fechas');
 
 //RUTAS para el historial clinico
@@ -71,5 +72,6 @@ Route::get('/historial/pdf',[HistorialController::class,'pdf'])->name('admin.his
 Route::resource('/historial', HistorialController::class)->names('admin.historial')->middleware('auth', 'can:admin.historial');
 
 //RUTAS para pagos
-Route::get('/pagos/pdf',[PagoController::class,'pdf'])->name('admin.pagos.pdf')->middleware('auth', 'can:admin.pagos');
+Route::get('/pagos/pdf/{id}',[PagoController::class,'pdf'])->name('admin.pagos.pdf');
+// ->middleware('auth', 'can:admin.pagos')
 Route::resource('/pagos', PagoController::class)->names('admin.pagos')->middleware('auth', 'can:admin.pagos');
