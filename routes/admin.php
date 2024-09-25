@@ -14,6 +14,8 @@ use App\Http\Controllers\SecretariaController;
 use App\Http\Controllers\ConsultorioController;
 use App\Http\Controllers\DoctorController;
 use App\Http\Controllers\EventController;
+use App\Http\Controllers\HistorialController;
+use App\Http\Controllers\PagoController;
 
 // use App\Http\Controllers\UsuarioController;
 // use App\Http\Controllers\ClaseController;
@@ -64,4 +66,10 @@ Route::get('/reservas/reportes', [EventController::class, 'reportes'])->name('ad
 Route::get('/reservas/pdf', [EventController::class, 'pdf'])->name('admin.reservas.pdf')->middleware('auth', 'can:admin.reservas.pdf');
 Route::get('/reservas/pdf_fechas', [EventController::class, 'pdf_fechas'])->name('admin.reservas.pdf_fechas')->middleware('auth', 'can:admin.event.pdf_fechas');
 
+//RUTAS para el historial clinico
+Route::get('/historial/pdf',[HistorialController::class,'pdf'])->name('admin.historial.pdf')->middleware('auth', 'can:admin.historial');
+Route::resource('/historial', HistorialController::class)->names('admin.historial')->middleware('auth', 'can:admin.historial');
 
+//RUTAS para pagos
+Route::get('/pagos/pdf',[PagoController::class,'pdf'])->name('admin.pagos.pdf')->middleware('auth', 'can:admin.pagos');
+Route::resource('/pagos', PagoController::class)->names('admin.pagos')->middleware('auth', 'can:admin.pagos');

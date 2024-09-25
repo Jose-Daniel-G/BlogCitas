@@ -72,7 +72,7 @@ class UserSeeder extends Seeder
         ])->assignRole('doctor');
         Doctor::create([
             'nombres' => 'Doctor1',
-            'apellidos' => 'Lewis',
+            'apellidos' => 'Gallardo',
             'telefono' => '432324324',
             'licencia_medica' => '777777',
             'especialidad' => 'ODONTOLOGIA',
@@ -87,12 +87,36 @@ class UserSeeder extends Seeder
         ])->assignRole('doctor');
         Doctor::create([
             'nombres' => 'Doctor2',
-            'apellidos' => 'Lewis',
+            'apellidos' => 'Valdes',
             'telefono' => '123123213',
             'licencia_medica' => '222222',
             'especialidad' => 'FISIOTERAPIA',
             'user_id' => '6',
         ]);
+        // -------------[ PACIENTE ]----------------------
+        User::create([
+            'name' => 'Paciente',
+            'email' => 'paciente@email.com',
+            'email_verified_at' => now(),
+            'password' => bcrypt('123123123'),
+        ])->assignRole('paciente');
+        Paciente::create([
+            'nombres' => 'Paciente',
+            'apellidos' => 'vargas',
+            'cc' => '12312753',
+            'nro_seguro' => '12395113',
+            'fecha_nacimiento' => '01-01-1986',
+            'genero' => 'M',
+            'celular' => '12395113',
+            'correo' => 'paciente.vargas@gmail.com',
+            'direccion' => 'Cll 9 oeste',
+            'grupo_sanguineo' => 'o+',
+            'alergias' => 'polvo',
+            'contacto_emergencia' => '65495113',
+            'observaciones' => 'le irrita estar cerca del povo',
+            'user_id' => '7',
+        ]);
+        // -------------------------------------------------
         //------------- USUARIOS ----------------]
         User::create([
             'name' => 'Fancisco Antonio Grijalba Osorio', // 'sexo'=> 'M', 'telefono'=>'314852684',
@@ -109,18 +133,12 @@ class UserSeeder extends Seeder
             'password' => bcrypt('123123123'),
         ])->assignRole('blogger');
 
-        User::create([
-            'name' => 'Paciente',
-            'email' => 'paciente@email.com',
-            'email_verified_at' => now(),
-            'password' => bcrypt('123123123'),
-        ])->assignRole('paciente');
-
         User::factory()->create([
             'name' => 'Test User',
             'email' => 'test@email.com',
             'password' => bcrypt('123123123'),
         ])->assignRole('usuario');
+
         User::factory()->create([
             'name' => 'user',
             'email' => 'user@email.com',

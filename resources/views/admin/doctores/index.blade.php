@@ -1,8 +1,8 @@
 @extends('adminlte::page')
 
 @section('title', 'Dashboard')
-@section('css')
-@stop
+{{-- @section('css')
+@stop --}}
 @section('content_header')
     <h1>Listado de doctores</h1>
 @stop
@@ -47,14 +47,14 @@
                                     <td scope="row">
                                         <div class="btn-group" role="group" aria-label="basic example">
                                             <a href="{{ route('admin.doctores.show', $doctor->id) }}"
-                                                class="btn btn-info btn-sm">Ver</a>
+                                                class="btn btn-info btn-sm"><i class="fas fa-eye"></i></a>
                                             <a href="{{ route('admin.doctores.edit', $doctor->id) }}"
-                                                class="btn btn-success btn-sm">Editar</a>
+                                                class="btn btn-success btn-sm"><i class="fas fa-edit"></i></a>
                                             <form action="{{ route('admin.doctores.destroy', $doctor->id) }}" method="POST"
                                                 onsubmit="return confirm('¿Estás seguro de que deseas eliminar este evento?');">
                                                 @csrf
                                                 @method('DELETE')
-                                                <button type="submit" class="btn btn-danger">Eliminar</button>
+                                                <button type="submit" class="btn btn-danger"><i class="fas fa-trash"></i></button>
                                             </form>
 
                                         </div>
@@ -68,7 +68,19 @@
         </div>
     </div>
 @stop
+@section('css')
+    {{-- Add here extra stylesheets --}}
+    <!-- DataTables core CSS -->
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.25/css/jquery.dataTables.min.css">
+    
+    <!-- DataTables Buttons extension CSS -->
+    <link rel="stylesheet" href="https://cdn.datatables.net/buttons/1.7.1/css/buttons.dataTables.min.css">
 
+    {{-- NOTA: DESEO TOMAR ESTOS ESTILOS PARA LOS BOTONES DE LA TABLA, MAS NO HE PODIDO --}}
+    {{-- <link rel="stylesheet" href="{{ asset('plugins/datatables-bs4/css/dataTables.bootstrap4.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('plugins/datatables-responsive/css/responsive.bootstrap4.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('plugins/datatables-buttons/css/buttons.bootstrap4.min.css') }}"> --}}
+@stop
 @section('js')
     <script src="https://cdn.datatables.net/2.1.5/js/dataTables.js"></script>
     <script src="https://cdn.datatables.net/2.1.5/js/dataTables.bootstrap4.js"></script>
@@ -83,12 +95,6 @@
     <script src="https://cdn.datatables.net/buttons/2.3.0/js/buttons.colVis.min.js"></script>
     <script>
         new DataTable('#doctores', {
-            responsive: true,
-            autoWidth: false, //no le vi la funcionalidad
-            dom: 'Bfrtip', // Añade el contenedor de botones
-            buttons: [
-                'copy', 'csv', 'excel', 'pdf', 'print', 'colvis' // Botones que aparecen en la imagen
-            ],
             "language": {
                 "decimal": "",
                 "emptyTable": "No hay datos disponibles en la tabla",
@@ -112,7 +118,35 @@
                     "orderable": "Ordenar por esta columna",
                     "orderableReverse": "Invertir el orden de esta columna"
                 }
-            }
+            },
+            responsive: true,
+            autoWidth: false, //no le vi la funcionalidad
+            dom: 'Bfrtip', // Añade el contenedor de botones
+            buttons: [{
+                extend: 'collection',
+                text: 'Reportes',
+                orientation: 'landscape',
+                buttons: [
+                    {
+                        text: 'Copiar',
+                        extend: 'copy'
+                    },
+                    {
+                        // text: '<i class="bi bi-file-pdf-fill"></i>',//NO SE ESTA VISUALIZANDO ICONO DE  BOOTSTRAP 4
+                        extend: 'pdf'
+                    },
+                    {
+                        extend: 'csv'
+                    },
+                    {
+                        extend: 'excel'
+                    },
+                    {
+                        text: 'Imprimir',
+                        extend: 'print'
+                    }
+                ]
+            }, ],
 
         });
         @if (session('info') && session('icono'))

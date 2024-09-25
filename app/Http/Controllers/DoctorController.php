@@ -36,6 +36,7 @@ class DoctorController extends Controller
             'email' => 'required|email|max:255',
             'password' => 'nullable|max:255|confirmed',
         ]);
+        
         $usuario = new User();
         $usuario->name = $request->nombres;
         $usuario->email = $request->email;

@@ -165,6 +165,29 @@
                                 </div>
                             </div>
                             <div class="row">
+                                <div class="col-md-3">
+                                    <div class="form-group">
+                                        <label for="password">Contrasena </label><b>*</b>
+                                        <input type="password" class="form-control" name="password"
+                                            value="{{ old('password') }}" required>
+                                        @error('password')
+                                            <small class="bg-danger text-white p-1">{{ $message }}</small>
+                                        @enderror
+                                    </div>
+                                </div>
+
+                                <div class="col-md-3">
+                                    <div class="form-group">
+                                        <label for="password_confirmation">Verificacion de contrasena </label><b>*</b>
+                                        <input type="password" class="form-control" name="password_confirmation"
+                                            value="{{ old('password_confirmation') }}" required>
+                                        @error('password_confirmation')
+                                            <small class="bg-danger text-white p-1">{{ $message }}</small>
+                                        @enderror
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
 
                                 <div class="col-md-12">
                                     <div class="form-group">

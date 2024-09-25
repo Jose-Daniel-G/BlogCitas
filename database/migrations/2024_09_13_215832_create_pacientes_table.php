@@ -26,6 +26,9 @@ return new class extends Migration
             $table->string('alergias' , 255);
             $table->string('contacto_emergencia' , 255);
             $table->string('observaciones' , 255)->nullable();
+
+            $table->unsignedBigInteger('user_id');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->timestamps();
         });
     }

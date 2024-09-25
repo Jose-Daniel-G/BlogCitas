@@ -449,7 +449,25 @@ return [
             'text'        => 'Reservas',
             'route'         => 'admin.reservas.reportes',
             'icon' => 'fas fa-envelope',
-            // 'can'  => 'admin.reservas.reportes',
+            'can'  => 'admin.reservas.reportes',
+        ],
+        [
+            'text'        => 'Pagos',
+            'route'         => 'admin.pagos.index',
+            'icon' => 'fas fa-th-large',
+            'can'  => 'admin.pagos.index',
+            'submenu' => [
+                [
+                    'text' => 'Crear pago',
+                    'icon'        => 'far fa-circle nav-icon',
+                    'route' => 'admin.pagos.create',
+                ],
+                [
+                    'text' => 'Listado de pagos',
+                    'icon'        => 'far fa-circle nav-icon',
+                    'route' => 'admin.pagos.index',
+                ],
+        ],
         ],
         // =====================================================================
         // [

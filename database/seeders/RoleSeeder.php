@@ -119,9 +119,35 @@ class RoleSeeder extends Seeder
         //----------------------------------------------------------------------------------------
 
         //RUTAS PARA LAS RESERVAS
-        Permission::create(['name'=>'admin.reservas.reportes'])->syncRoles([$admin]);
-        Permission::create(['name'=>'admin.reservas.pdf'])->syncRoles([$admin]);
-        Permission::create(['name'=>'admin.reservas.pdf_fechas'])->syncRoles([$admin]);
+        Permission::create(['name' => 'admin.reservas.reportes'])->syncRoles([$admin]);
+        Permission::create(['name' => 'admin.reservas.pdf'])->syncRoles([$admin]);
+        Permission::create(['name' => 'admin.reservas.pdf_fechas'])->syncRoles([$admin]);
+
+        //rutas para el historial clinico
+        Permission::create(['name' => 'admin.historial.index'])->syncRoles([$admin, $doctor]);
+        Permission::create(['name' => 'admin.historial.create'])->syncRoles([$admin, $doctor]);
+        Permission::create(['name' => 'admin.historial.store'])->syncRoles([$admin, $doctor]);
+        Permission::create(['name' => 'admin.historial.pdf'])->syncRoles([$admin, $doctor]);
+        Permission::create(['name' => 'admin.historial.show'])->syncRoles([$admin, $doctor]);
+        Permission::create(['name' => 'admin.historial.edit'])->syncRoles([$admin, $doctor]);
+        Permission::create(['name' => 'admin.historial.buscar_paciente'])->syncRoles([$admin, $doctor]);
+        Permission::create(['name' => 'admin.historial.imprimir_historial'])->syncRoles([$admin, $doctor]);
+
+        //rutas para pagos
+        Permission::create(['name' => 'admin.pagos.index'])->syncRoles([$admin, $secretaria]);
+        Permission::create(['name' => 'admin.pagos.create'])->syncRoles([$admin, $secretaria]);
+        Permission::create(['name' => 'admin.pagos.store'])->syncRoles([$admin, $secretaria]);
+        Permission::create(['name' => 'admin.pagos.pdf'])->syncRoles([$admin, $secretaria]);
+        Permission::create(['name' => 'admin.pagos.show'])->syncRoles([$admin, $secretaria]);
+        Permission::create(['name' => 'admin.pagos.edit'])->syncRoles([$admin, $secretaria]);
+        Permission::create(['name' => 'admin.pagos.buscar_paciente'])->syncRoles([$admin, $secretaria]);
+        Permission::create(['name' => 'admin.pagos.imprimir_historial'])->syncRoles([$admin, $secretaria]);
+
+
+
+
+
+
 
         // $admin->permissions()->attach();
 

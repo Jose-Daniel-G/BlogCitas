@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Historial;
 use App\Models\Paciente;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -35,12 +36,21 @@ class PacienteController extends Controller
             'grupo_sanguineo' => 'required',
             'alergias' => 'required',
             'contacto_emergencia' => 'required',
+            'password' => 'nullable|max:255|confirmed',
         ]);
+
+        $usuario = new User();
+        $usuario->name = $request->nombres;
+        $usuario->email = $request->correo;
+        $usuario->password = Hash::make($request->password);
+        $usuario->save();
+
+        // Crear un nuevo doctor
+        $data = $request->all();
+        $data['user_id'] = auth()->id();
         // Crear un nuevo paciente
-        $paciente = new Paciente();
-        $paciente->fill($validatedData); // Asignación masiva
-        $paciente->save();
-        // $usuario->assignRole('paciente');
+        Paciente::create($data); // Asignación masiva
+        $usuario->assignRole('paciente');
 
         return redirect()->route('admin.pacientes.index')
             ->with('info', 'Se registro al paciente de forma correcta')
@@ -54,7 +64,9 @@ class PacienteController extends Controller
 
     public function edit(Paciente $paciente)
     {
-        return view('admin.pacientes.edit', compact('paciente'));
+        $historial = Historial::all();
+        $pacientes = Paciente::orderBy('apellidos', 'asc')->get();
+        return view('admin.pacientes.edit', compact('historial', 'pacientes'));
     }
 
     public function update(Request $request, Paciente $paciente)
@@ -73,16 +85,16 @@ class PacienteController extends Controller
             'alergias' => 'required',
             'contacto_emergencia' => 'required',
         ]);
-    
+
         // Actualizar los datos del paciente existente
         $paciente->fill($validatedData); // Asignación masiva
         $paciente->save(); // Guardar los cambios
-    
+
         return redirect()->route('admin.pacientes.index')
             ->with('info', 'Paciente actualizado correctamente.')
             ->with('icono', 'success');
     }
-    
+
 
     public function destroy(Paciente $paciente)
     {
@@ -91,13 +103,12 @@ class PacienteController extends Controller
             // Si existe un usuario asociado, eliminarlo
             $paciente->user->delete();
         }
-    
+
         // Eliminar el paciente
         $paciente->delete();
-    
+
         return redirect()->route('admin.pacientes.index')
             ->with('info', 'El paciente se eliminó con éxito')
             ->with('icono', 'success');
     }
-    
 }
