@@ -54,15 +54,17 @@
                                     <td scope="row">
                                         <div class="btn-group" role="group" aria-label="basic example">
                                             <a href="{{ route('admin.horarios.show', $horario->id) }}"
-                                                class="btn btn-info btn-sm">Ver</a>
+                                                class="btn btn-info btn-sm"><i class="fas fa-eye"></i>
+                                              </a>
                                             <a href="{{ route('admin.horarios.edit', $horario->id) }}"
-                                                class="btn btn-success btn-sm">Editar</a>
+                                                class="btn btn-success btn-sm">  <i class="fas fa-edit"></i>
+                                                </a>
                                             <form action="{{ route('admin.horarios.destroy', $horario->id) }}"
                                                 method="POST"
                                                 onsubmit="return confirm('¿Estás seguro de que deseas eliminar este horario?');">
                                                 @csrf
                                                 @method('DELETE')
-                                                <button type="submit" class="btn btn-danger">Eliminar</button>
+                                                <button type="submit" class="btn btn-danger"><i class="fas fa-trash"></i></button>
                                             </form>
 
                                         </div>

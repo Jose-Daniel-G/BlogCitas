@@ -66,7 +66,7 @@
                                             Cancelar
                                             {{-- <i class="fa-solid fa-plus"></i> --}}
                                         </a>
-                                        <button type="submit" class="btn btn-success">Editar usuario</button>
+                                        <button type="submit" class="btn btn-success">Actualizar usuario</button>
 
                                     </div>
                                 </div>

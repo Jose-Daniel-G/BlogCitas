@@ -24,13 +24,13 @@
                             <td>{{ $post->id }}</td>
                             <td>{{ $post->name }}</td>
                             <td width="10px"><a href="{{ route('admin.posts.edit', $post) }}"
-                                    class="btn btn-primary btn-sm">Editar</a></td>
+                                    class="btn btn-primary btn-sm">  <i class="fas fa-edit"></i></a></td>
                             <td width="10px">
                                 <form action="{{ route('admin.posts.destroy', $post) }}" method="POST">
                                     @method('DELETE')
                                     @csrf
                                     <button type="submit" name="delete"
-                                        class="btn btn-danger btn-sm">Eliminar</button>
+                                        class="btn btn-danger btn-sm"><i class="fas fa-trash"></i></button>
                                 </form>
                             </td>
                         </tr>

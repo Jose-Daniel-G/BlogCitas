@@ -29,13 +29,14 @@
                     <td>{{ $category->id }}</td>
                     <td>{{ $category->name }}</td>
                     <td width="10px">
-                        <a href="{{ route('admin.categories.edit', $category) }}" class="btn btn-primary btn-sm">Editar</a>
+                        <a href="{{ route('admin.categories.edit', $category) }}" class="btn btn-primary btn-sm">   <i class="fas fa-edit"></i>
+                            </a>
                     </td>
                     <td width="10px">
                         <form action="{{ route('admin.categories.destroy', $category) }}" method="post">
                             @csrf
                             @method('delete')
-                            <button class="btn btn-danger btn-sm">Eliminar</button>
+                            <button class="btn btn-danger btn-sm"><i class="fas fa-trash"></i></button>
                         </form>
                     </td>
                 </tr>

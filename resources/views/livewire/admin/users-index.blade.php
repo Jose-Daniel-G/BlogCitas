@@ -18,7 +18,8 @@
                             <td>{{$user->id}}</td>
                             <td>{{$user->name}}</td>
                             <td>{{$user->email}}</td>
-                            <td width = "10px"><a href="{{route('admin.users.edit', $user)}}" class="btn btn-primary">Editar</a></td>
+                            <td width = "10px"><a href="{{route('admin.users.edit', $user)}}" class="btn btn-primary">  <i class="fas fa-edit"></i>
+                                </a></td>
                         </tr>
                     @endforeach
                 </tbody>

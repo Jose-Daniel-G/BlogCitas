@@ -30,13 +30,14 @@
                     <td>{{ $tag->name }}</td>
                     <td colspan="2"></td>
                     <td width="10px">
-                        <a class="btn btn-primary btn-sm" href="{{ route('admin.tags.edit', $tag) }}">Editar</a>
+                        <a class="btn btn-primary btn-sm" href="{{ route('admin.tags.edit', $tag) }}">   <i class="fas fa-edit"></i>
+                            </a>
                     </td>
                     <td width="10px">
                         <form action="{{ route('admin.tags.destroy', $tag) }}" method="post">
                             @csrf
                             @method('delete')
-                            <button class="btn btn-danger btn-sm">Eliminar</button>
+                            <button class="btn btn-danger btn-sm"><i class="fas fa-trash"></i></button>
                         </form>
                     </td>
                 </tr>
