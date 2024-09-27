@@ -56,13 +56,13 @@ class RoleSeeder extends Seeder
         //rutas para el admin
         Permission::create(['name' => 'admin.users.index'])->syncRoles([$admin]);
         //proximamente remplazadas estas rutas seran
-        Permission::create(['name' => 'admin.usuarios.index'])->syncRoles([$admin]);
-        Permission::create(['name' => 'admin.usuarios.create'])->syncRoles([$admin]);
-        Permission::create(['name' => 'admin.usuarios.store'])->syncRoles([$admin]);
-        Permission::create(['name' => 'admin.usuarios.show'])->syncRoles([$admin]);
-        Permission::create(['name' => 'admin.usuarios.edit'])->syncRoles([$admin]);
+        Permission::create(['name' => 'admin.users.index'])->syncRoles([$admin]);
+        Permission::create(['name' => 'admin.users.create'])->syncRoles([$admin]);
+        Permission::create(['name' => 'admin.users.store'])->syncRoles([$admin]);
+        Permission::create(['name' => 'admin.users.show'])->syncRoles([$admin]);
+        Permission::create(['name' => 'admin.users.edit'])->syncRoles([$admin]);
         Permission::create(['name' => 'admin.users.update'])->syncRoles([$admin]);
-        Permission::create(['name' => 'admin.usuarios.destroy'])->syncRoles([$admin]);
+        Permission::create(['name' => 'admin.users.destroy'])->syncRoles([$admin]);
 
         //rutas - configuraciones
         Permission::create(['name' => 'admin.config.index'])->syncRoles([$admin]);

@@ -7,18 +7,18 @@
 @stop
 
 @section('content')
-<div class="container-fluid">
-    <div class="row">
-        <h1>Reportes de doctores</h1>
-    </div>
-    <div class="row">
-        <div class="col-md-4">
-            <div class="card card-outline card-primary">
-                <div class="card-header">
-                    <h3 class="card-title">Generar reporte</h3>
-                </div>
-                <div class="card-body">
-                        </div class="row">
+    <div class="container-fluid">
+        <div class="row">
+            <h1>Reportes de doctores</h1>
+        </div>
+        <div class="row">
+            <div class="col-md-4">
+                <div class="card card-outline card-primary">
+                    <div class="card-header">
+                        <h3 class="card-title">Generar reporte</h3>
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
                             <div class="col-md-12">
                                 <div class="form-group">
                                     <a href="{{ route('admin.doctores.pdf') }}" class="btn btn-success"><i
@@ -26,11 +26,14 @@
                                 </div>
                             </div>
                         </div>
+
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
+    </div>
+    </div>
 
 @stop
 

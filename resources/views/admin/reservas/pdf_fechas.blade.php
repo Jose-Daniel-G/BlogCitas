@@ -22,7 +22,7 @@
         </thead>
         <tbody>
             <tr>
-                <td scope="row"> <img src="{{ asset('storage' . $config->logo) }}" alt="logo" width="80px"></td>
+                <td scope="row"> <img src="{{ asset('storage/' . $config->logo) }}" alt="logo" width="80px"></td>
             </tr>
         </tbody>
     </table>

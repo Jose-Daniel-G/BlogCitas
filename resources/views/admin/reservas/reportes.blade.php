@@ -9,7 +9,7 @@
 @section('content')
     <div class="container-fluid">
         <div class="row">
-            <h1>Reportes de doctores</h1>
+            <h1>Reportes de citas medicas</h1>
         </div>
         <div class="row">
             <div class="col-md-4">
@@ -18,18 +18,45 @@
                         <h3 class="card-title">Generar reporte</h3>
                     </div>
                     <div class="card-body">
-                        {{-- <form action="{{ route('admin.reservas.pdf')}}" method="POST" autocomplete="off"> --}}
-                            @csrf
-
-
-                            </div class="row">
-                                <div class="col-md-12">
-                                    <div class="form-group">
-                                 <a href="{{ route('admin.reservas.pdf')}}" class="btn btn-success"><i class="fas fa-print">Listado de personal Medico</i></a>
-                                    </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <a href="{{ route('admin.reservas.pdf') }}" class="btn btn-success"><i
+                                            class="fas fa-print">Listado de personal Medico</i></a><br><br>
                                 </div>
                             </div>
-                        {{-- </form> --}}
+                        </div>
+
+                    </div>
+                </div>
+                </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="card card-outline card-primary">
+                            <div class="card-header">
+                                <h3 class="card-title">Generar reporte por fechas</h3>
+                            </div>
+                            <div class="card-body">
+                                <form action="">
+                                    <div class="row">
+                                        <div class="col-md-4">
+
+                                            <input type="date" class="form-control">Fecha inicio</i>
+                                        </div>
+                                        <div class="col-md-4">
+
+                                            <input type="date" class="form-control">Fecha fin</i>
+                                        </div>
+                                        <div class="col-md-4">
+
+                                            <button class="btn btn-success"><i
+                                                class="fas fa-print"></i> Reporte</button>
+                                        </div>
+                                    </div>
+                            </div>
+                            </form>
+                        </div>
                     </div>
                 </div>
             </div>

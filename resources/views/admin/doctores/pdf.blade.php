@@ -5,50 +5,48 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <title>Listado del Personal Médico</title>
+    <style>
+        body {font-family: Arial, sans-serif;font-size: 8pt;margin: 0;padding: 20px; }
+        table {width: 100%;border-collapse: collapse;margin-bottom: 20px; }
+        th, td {border: 1px solid #ddd;padding: 8px;text-align: left; }
+        th {background-color: #e7e7e7;color: #333; }
+        h2 {text-align: center;margin: 20px 0; }
+        .header-info {text-align: center;margin-bottom: 20px; }
+        .header-info img {width: 80px;display: block;margin: 0 auto; }
+    </style>
 </head>
 
 <body>
+    <div class="header-info">
+        <strong>{{ $config->nombre }}</strong><br>
+        {{ $config->direccion }}<br>
+        {{ $config->telefono }}<br>
+        {{ $config->correo }}<br>
+        <img src="{{ url('storage/' . $config->logo) }}" alt="logo">
+    </div>
+    <h2>Listado del Personal Médico</h2>
     <table class="table">
         <thead>
             <tr>
-                <th class="text-center">
-                    {{ $config->nombre }} <br>
-                    {{ $config->direccion }} <br>
-                    {{ $config->telefono }} <br>
-                    {{ $config->correo }} <br>
-                </th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td scope="row"> <img src="{{ asset('storage' . $config->logo) }}" alt="logo" width="80px"></td>
-            </tr>
-        </tbody>
-    </table>
-    <h2>Listado del personal medico</h2>
-    <table class="table table-bodrered table-sm table-striped">
-        <thead class="bg-secondary text-white p-3">
-            <tr>
                 <th>Nro</th>
-                <th>Apellidos y nombres</th>
-                <th>Telefono</th>
-                <th>Licencia Medica</th>
-                <th>Epecialidad</th>
+                <th>Apellidos y Nombres</th>
+                <th>Teléfono</th>
+                <th>Licencia Médica</th>
+                <th>Especialidad</th>
             </tr>
         </thead>
         <tbody>
-            <?php $contador = 1;?>
+            <?php $contador = 1; ?>
             @foreach ($doctores as $doctor)
                 <tr>
-                    <td class="text-center">{{ $contador++ }}</td>
-                    <td>{{ $doctor->apellidos }}</td>
-                    <td class="text-center">{{ $doctor->telefono }}</td>
+                    <td style="text-align: center">{{ $contador++ }}</td>
+                    <td>{{ $doctor->apellidos . ' ' . $doctor->nombres }}</td>
+                    <td style="text-align: center">{{ $doctor->telefono }}</td>
                     <td>{{ $doctor->licencia_medica }}</td>
                     <td>{{ $doctor->especialidad }}</td>
                 </tr>
             @endforeach
-
         </tbody>
     </table>
 </body>

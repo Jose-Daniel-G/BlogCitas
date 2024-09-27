@@ -346,7 +346,7 @@ return [
             'text'        => 'Usuarios',
             'route'         => 'admin.users.index',
             'icon' => 'fas fa-fw fa-user',
-            'can'  => 'admin.users.index',
+            // 'can'  => 'admin.users.index',
         ],
 
         ['header' => 'ADMINISTRADOR', 'can' => 'admin.secretarias.index',],
@@ -447,13 +447,18 @@ return [
         ],
         [
             'text'        => 'Reservas',
-            'route'         => 'admin.reservas.reportes',
             'icon' => 'fas fa-envelope',
             'can'  => 'admin.reservas.reportes',
+            'submenu' => [
+                [
+                    'text' => 'Reportes',
+                    'icon'        => 'far fa-circle nav-icon',
+                    'route' => 'admin.reservas.reportes',
+                ],
+        ],
         ],
         [
             'text'        => 'Pagos',
-            'route'         => 'admin.pagos.index',
             'icon' => 'fas fa-th-large',
             'can'  => 'admin.pagos.index',
             'submenu' => [

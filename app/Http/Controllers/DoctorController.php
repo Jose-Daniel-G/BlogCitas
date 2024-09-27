@@ -121,6 +121,7 @@ class DoctorController extends Controller
     {
         $config = Config::latest()->first();
         $doctores = Doctor::all();
+        // dd('storage/' . $config->logo);
         // dd($config);
         $pdf = PDF::loadView('admin.doctores.pdf', compact('config', 'doctores'));
 

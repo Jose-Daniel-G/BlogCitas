@@ -107,9 +107,6 @@
 
 @section('js')
     <script>
-        $(document).ready(function() {
-           alert('jQuery está funcionando');
-        });
         // carga contenido de tabla en  consultorio_info
         $('#consultorio_select').on('change', function() {
             var consultorio_id = $('#consultorio_select').val();

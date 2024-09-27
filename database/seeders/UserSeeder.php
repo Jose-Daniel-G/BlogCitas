@@ -213,13 +213,13 @@ class UserSeeder extends Seeder
         // ])->assignRole('Alumno');
 
         User::factory(9)->create();
-        /// CREACION DE HORARIOS
-        Horario::create([
-            'dia' => 'LUNES',
-            'hora_inicio' => '8:00:00',
-            'hora_fin' => '14:00:00',
-            'doctor_id' => '1',
-            'consultorio_id' => '1',
-        ]);
+        // /// CREACION DE HORARIOS
+        // Horario::create([
+        //     'dia' => 'LUNES',
+        //     'hora_inicio' => '8:00:00',
+        //     'hora_fin' => '14:00:00',
+        //     'doctor_id' => '1',
+        //     'consultorio_id' => '1',
+        // ]);
     }
 }

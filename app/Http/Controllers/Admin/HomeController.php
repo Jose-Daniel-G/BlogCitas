@@ -31,4 +31,13 @@ class HomeController extends Controller
         $eventos = CalendarEvent::all();
         return view('admin.index', compact('total_usuarios', 'total_secretarias', 'total_pacientes', 'total_consultorios', 'total_doctores', 'total_horarios','total_eventos','consultorios', 'doctores', 'eventos','total_configuraciones'));
     }
+    public function ver_reservas($id)
+    { // echo $id;
+        $eventos = CalendarEvent::where('user_id',$id)->get();
+        return view('admin.ver_reservas', compact('eventos'));
+    }
+    public function create()
+    {
+        return view('admin.users.create');
+    }
 }

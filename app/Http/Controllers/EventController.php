@@ -133,10 +133,10 @@ class EventController extends Controller
     }
 
     public function pdf(){
-        $configuracion = Config::latest()->first();
+        $config = Config::latest()->first();
         $eventos = Event::all();
 
-        $pdf = Pdf::loadView('admin.reservas.pdf', compact('configuracion','eventos'));
+        $pdf = Pdf::loadView('admin.reservas.pdf', compact('config','eventos'));
 
         // Incluir la numeración de páginas y el pie de página
         $pdf->output();
@@ -154,14 +154,14 @@ class EventController extends Controller
         //$datos = request()->all();
         //return response()->json($datos);
 
-        $configuracion = Config::latest()->first();
+        $config = Config::latest()->first();
 
         // $fecha_inicio = $request->input('fecha_inicio');
         // $fecha_fin = $request->input('fecha_fin');
 
         // $eventos = Event::whereBetween('start',[$fecha_inicio, $fecha_fin])->get();
 
-        $pdf = \PDF::loadView('admin.reservas.pdf', compact('configuracion','eventos'));
+        $pdf = \PDF::loadView('admin.reservas.pdf', compact('config','eventos'));
 
         // Incluir la numeración de páginas y el pie de página
         $pdf->output();
