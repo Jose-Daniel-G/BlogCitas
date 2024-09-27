@@ -41,7 +41,7 @@ class HorarioController extends Controller
     public function store(Request $request)
     {
         // Validar los datos de entrada
-        $validatedData = $request->validate([
+        $request->validate([
             'dia' => 'required',
             'hora_inicio' => 'required|date_format:H:i',
             'hora_fin' => 'required|date_format:H:i|after:hora_inicio',
@@ -102,7 +102,7 @@ class HorarioController extends Controller
     public function update(Request $request, Horario $horario)
     {
         // dd($request->all());
-        $validatedData = $request->validate([
+        $request->validate([
             'dia' => 'required',
             'hora_inicio' => 'required',
             'hora_fin' => 'required',

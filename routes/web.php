@@ -30,6 +30,6 @@ Route::resource('/admin/horarios', HorarioController::class)->names('admin.horar
 //AJAX
 Route::get('/consultorio/{id}', [WebController::class, 'cargar_datos_consultorios'])->name('cargar_datos_consultorios')->middleware('auth','can:cargar_datos_consultorios');
 Route::get('/cargar_reserva_doctores/{id}', [WebController::class, 'cargar_reserva_doctores'])->name('cargar_reserva_doctores')->middleware('auth','can:cargar_reserva_doctores');
-Route::get('/admin/ver_reservas/{id}', [AdminController::class, 'ver_reservas'])->name('admin.ver_reservas')->middleware('auth','can:admin.ver_reservas');
+Route::get('/admin/ver_reservas/{id}', [AdminController::class, 'ver_reservas'])->name('ver_reservas')->middleware('auth','can:ver_reservas');
 Route::get('/admin/horarios/consultorio/{id}', [HorarioController::class, 'cargar_datos_consultorios'])->name('admin.horarios.cargar_datos_consultorios')->middleware('auth');
 // Route::get('/admin/doctores/reportes', [DoctorController::class, 'reportes'])->name('admin.doctores.reportes');

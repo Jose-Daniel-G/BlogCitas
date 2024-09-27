@@ -128,9 +128,9 @@ class EventController extends Controller
             'icono' => 'success',
         ]);
     }
-    // public function reportes(){
-    //     return view('admin.reservas.reportes');
-    // }
+    public function reportes(){
+        return view('admin.reservas.reportes');
+    }
 
     public function pdf(){
         $configuracion = Config::latest()->first();
@@ -150,28 +150,28 @@ class EventController extends Controller
         return $pdf->stream();
     }
 
-    // public function pdf_fechas(Request $request){
-    //     //$datos = request()->all();
-    //     //return response()->json($datos);
+    public function pdf_fechas(){
+        //$datos = request()->all();
+        //return response()->json($datos);
 
-    //     $configuracion = Configuracione::latest()->first();
+        $configuracion = Config::latest()->first();
 
-    //     $fecha_inicio = $request->input('fecha_inicio');
-    //     $fecha_fin = $request->input('fecha_fin');
+        // $fecha_inicio = $request->input('fecha_inicio');
+        // $fecha_fin = $request->input('fecha_fin');
 
-    //     $eventos = Event::whereBetween('start',[$fecha_inicio, $fecha_fin])->get();
+        // $eventos = Event::whereBetween('start',[$fecha_inicio, $fecha_fin])->get();
 
-    //     $pdf = \PDF::loadView('admin.reservas.pdf_fechas', compact('configuracion','eventos','fecha_inicio','fecha_fin'));
+        $pdf = \PDF::loadView('admin.reservas.pdf', compact('configuracion','eventos'));
 
-    //     // Incluir la numeración de páginas y el pie de página
-    //     $pdf->output();
-    //     $dompdf = $pdf->getDomPDF();
-    //     $canvas = $dompdf->getCanvas();
-    //     $canvas->page_text(20, 800, "Impreso por: ".Auth::user()->email, null, 10, array(0,0,0));
-    //     $canvas->page_text(270, 800, "Página {PAGE_NUM} de {PAGE_COUNT}", null, 10, array(0,0,0));
-    //     $canvas->page_text(450, 800, "Fecha: " . \Carbon\Carbon::now()->format('d/m/Y')." - ".\Carbon\Carbon::now()->format('H:i:s'), null, 10, array(0,0,0));
+        // Incluir la numeración de páginas y el pie de página
+        $pdf->output();
+        $dompdf = $pdf->getDomPDF();
+        $canvas = $dompdf->getCanvas();
+        $canvas->page_text(20, 800, "Impreso por: ".Auth::user()->email, null, 10, array(0,0,0));
+        $canvas->page_text(270, 800, "Página {PAGE_NUM} de {PAGE_COUNT}", null, 10, array(0,0,0));
+        $canvas->page_text(450, 800, "Fecha: " . \Carbon\Carbon::now()->format('d/m/Y')." - ".\Carbon\Carbon::now()->format('H:i:s'), null, 10, array(0,0,0));
 
 
-    //     return $pdf->stream();
-    // }
+        return $pdf->stream();
+    }
 }

@@ -114,10 +114,13 @@ class RoleSeeder extends Seeder
         //----------------------------------------------------------------------------------------
         Permission::create(['name' => 'cargar_datos_cosultorios'])->syncRoles([$admin, $usuario]);
         Permission::create(['name' => 'cargar_reserva_doctores'])->syncRoles([$admin, $usuario]);
-        Permission::create(['name' => 'admin.ver_reservas'])->syncRoles([$admin, $usuario]);
-        Permission::create(['name' => 'admin.eventos'])->syncRoles([$admin, $usuario]);
+        Permission::create(['name' => 'ver_reservas'])->syncRoles([$admin, $usuario]);
+        Permission::create(['name' => 'admin.eventos.create'])->syncRoles([$admin, $usuario]);
+        Permission::create(['name' => 'admin.eventos.destroy'])->syncRoles([$admin, $usuario]);
         //----------------------------------------------------------------------------------------
-
+        Permission::create(['name' => 'admin.pagos.buscar_paciente'])->syncRoles([$admin, $secretaria]);
+        Permission::create(['name' => 'admin.pagos.imprimir_historial'])->syncRoles([$admin, $secretaria]);
+        
         //RUTAS PARA LAS RESERVAS
         Permission::create(['name' => 'admin.reservas.reportes'])->syncRoles([$admin]);
         Permission::create(['name' => 'admin.reservas.pdf'])->syncRoles([$admin]);
@@ -140,8 +143,8 @@ class RoleSeeder extends Seeder
         Permission::create(['name' => 'admin.pagos.pdf'])->syncRoles([$admin, $secretaria]);
         Permission::create(['name' => 'admin.pagos.show'])->syncRoles([$admin, $secretaria]);
         Permission::create(['name' => 'admin.pagos.edit'])->syncRoles([$admin, $secretaria]);
-        Permission::create(['name' => 'admin.pagos.buscar_paciente'])->syncRoles([$admin, $secretaria]);
-        Permission::create(['name' => 'admin.pagos.imprimir_historial'])->syncRoles([$admin, $secretaria]);
+
+
 
 
 

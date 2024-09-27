@@ -18,19 +18,18 @@
                         <h3 class="card-title">Generar reporte</h3>
                     </div>
                     <div class="card-body">
-                        <form action="" method="POST" autocomplete="off">
+                        {{-- <form action="{{ route('admin.reservas.pdf')}}" method="POST" autocomplete="off"> --}}
                             @csrf
 
 
                             </div class="row">
                                 <div class="col-md-12">
                                     <div class="form-group">
-                                 <a href="{{ route('admin.doctores.pdf')}}" class="btn btn-success"><i class="fas fa-print">Listado de personal Medico</i></a><br><br>
-                                 <a href="" class="btn btn-success"><i class="fas fa-print">Listado de personal Medico</i></a>
+                                 <a href="{{ route('admin.reservas.pdf')}}" class="btn btn-success"><i class="fas fa-print">Listado de personal Medico</i></a>
                                     </div>
                                 </div>
                             </div>
-                        </form>
+                        {{-- </form> --}}
                     </div>
                 </div>
             </div>

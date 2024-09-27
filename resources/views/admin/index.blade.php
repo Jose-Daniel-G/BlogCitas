@@ -197,7 +197,7 @@
                             <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#claseModal">
                                 Registrar Cita Medica
                             </button>
-                            <a href="{{ route('admin.ver_reservas', Auth::user()->id) }}" class="btn btn-success">
+                            <a href="{{ route('ver_reservas', Auth::user()->id) }}" class="btn btn-success">
                                 <i class="bi bi-calendar-check"></i>Ver las reservas
                             </a>
                             <!-- Modal -->
@@ -368,7 +368,7 @@
             var consultorio_id = $('#consultorio_select').val();
             var url = "{{ route('admin.horarios.cargar_datos_consultorios', ':id') }}";
             url = url.replace(':id', consultorio_id);
-
+            alert(consultorio_id);
             if (consultorio_id) {
                 $.ajax({
                     url: url,

@@ -30,7 +30,7 @@ class AdminController extends Controller
     public function ver_reservas($id)
     { // echo $id;
         $eventos = CalendarEvent::where('user_id',$id)->get();
-        return view('admin.ver_reservas', compact('eventos'));
+        return view('ver_reservas', compact('eventos'));
     }
 
     public function create()

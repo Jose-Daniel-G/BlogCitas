@@ -33,7 +33,7 @@ Route::resource('posts', PostController::class)->names('admin.posts');
 
 //RUTAS ADMIN
 Route::get('/admin', [AdminController::class, 'index'])->name('admin.index')->middleware('auth');
-Route::get('/ver_reservas/{id}', [AdminController::class, 'ver_reservas'])->name('admin.ver_reservas')->middleware('auth','can:admin.ver_reservas');
+Route::get('/ver_reservas/{id}', [AdminController::class, 'ver_reservas'])->name('ver_reservas')->middleware('auth','can:ver_reservas');
 
 //RUTAS USUARIOS ADMIN
 // Route::resource('/usuarios', UsuarioController::class)->names('admin.usuarios')->middleware('auth', 'can:admin.usuarios');
@@ -51,9 +51,8 @@ Route::resource('/pacientes', PacienteController::class)->names('admin.pacientes
 Route::resource('/consultorios', ConsultorioController::class)->names('admin.consultorios')->middleware('auth', 'can:admin.consultorios');
 
 //RUTAS REPORTES DOCTORES ADMIN
-Route::get('/doctores/pdf/{id}', [DoctorController::class, 'reportes'])->name('admin.doctores.pdf');
-// ->middleware('auth', 'can:admin.doctores.pdf');
 Route::get('/doctores/reportes', [DoctorController::class, 'reportes'])->name('admin.doctores.reportes')->middleware('auth', 'can:admin.doctores.reportes');
+Route::get('/doctores/pdf', [DoctorController::class, 'pdf'])->name('admin.doctores.pdf')->middleware('auth', 'can:admin.doctores.pdf');
 Route::resource('/doctores', DoctorController::class)->names('admin.doctores')->parameters(['doctores' => 'doctor'])->middleware('auth', 'can:admin.doctores');
 
 
@@ -64,7 +63,7 @@ Route::resource('/eventos/create', EventController::class)->names('admin.eventos
 
 //RUTAS para las reservas
 Route::get('/reservas/reportes', [EventController::class, 'reportes'])->name('admin.reservas.reportes')->middleware('auth', 'can:admin.reservas.reportes');
-Route::get('/reservas/pdf/{id}', [EventController::class, 'pdf'])->name('admin.reservas.pdf')->middleware('auth', 'can:admin.reservas.pdf');
+Route::get('/reservas/pdf', [EventController::class, 'pdf'])->name('admin.reservas.pdf')->middleware('auth', 'can:admin.reservas.pdf');
 Route::get('/reservas/pdf_fechas', [EventController::class, 'pdf_fechas'])->name('admin.reservas.pdf_fechas')->middleware('auth', 'can:admin.event.pdf_fechas');
 
 //RUTAS para el historial clinico

@@ -117,11 +117,11 @@ class DoctorController extends Controller
     {
         return view('admin.doctores.reportes');
     }
-    public function pdf($id)
+    public function pdf()
     {
         $config = Config::latest()->first();
         $doctores = Doctor::all();
-        // dd($doctores);
+        // dd($config);
         $pdf = PDF::loadView('admin.doctores.pdf', compact('config', 'doctores'));
 
         // Incluir la numeración de páginas y el pie de página

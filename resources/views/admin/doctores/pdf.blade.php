@@ -38,7 +38,7 @@
             </tr>
         </thead>
         <tbody>
-            <? $contador = 1;?>
+            <?php $contador = 1;?>
             @foreach ($doctores as $doctor)
                 <tr>
                     <td class="text-center">{{ $contador++ }}</td>
