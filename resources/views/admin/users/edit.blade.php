@@ -62,12 +62,22 @@
                                 </div>
                                 <div class="col-md-12">
                                     <div class="form-group">
-                                        <a href="{{ route('admin.users.index') }}" class="btn btn-secondary">
-                                            Cancelar
-                                            {{-- <i class="fa-solid fa-plus"></i> --}}
-                                        </a>
+                                        @foreach ($roles as $role)
+                                            <label>
+                                                <input type="checkbox" name="roles[]" value="{{ $role->id }}" 
+                                                       {{ $user->roles->contains($role->id) ? 'checked' : '' }}>
+                                                {{ $role->name }}
+                                            </label>
+                                    @endforeach
+                                    </div>
+                                    @error('password_confirmation')
+                                        <small class="bg-danger text-white p-1">{{ $message }}</small>
+                                    @enderror
+                                </div>
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <a href="{{ route('admin.users.index') }}" class="btn btn-secondary">Cancelar</a>
                                         <button type="submit" class="btn btn-success">Actualizar usuarios</button>
-
                                     </div>
                                 </div>
                             </div>

@@ -46,10 +46,8 @@ class UserController extends Controller
     public function show(User $usuario){return view('admin.users.show', compact('usuario'));}
     
     public function edit(User $user)
-    {
-        $roles = Role::all();
-        return view('admin.users.edit', compact('user', 'roles'));
-    }
+            {$roles = Role::all();return view('admin.users.edit', compact('user', 'roles'));}
+
     public function update(Request $request, User $user)
     {
         $request->validate([
@@ -73,7 +71,7 @@ class UserController extends Controller
 
     public function destroy($id)
     {
-        // $usuario->delete();
+        // $user->delete();
         $user = User::findOrFail($id);
 
         $user->delete();

@@ -1,12 +1,6 @@
 <?php
 
-// use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PostController;
-use App\Http\Controllers\AdminController;
-use App\Http\Controllers\DoctorController;
-use App\Http\Controllers\EventController;
-use App\Http\Controllers\HorarioController;
-
 use App\Http\Controllers\WebController;
 use Illuminate\Support\Facades\Route;
 

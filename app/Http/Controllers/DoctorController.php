@@ -102,8 +102,7 @@ class DoctorController extends Controller
     public function destroy(Doctor $doctor)
     {
         // dd($doctor);
-        if ($doctor->user) {
-            $doctor->user->delete(); // Si el doctor tiene un usuario asociado, eliminarlo
+        if ($doctor->user) { $doctor->user->delete(); // Si el doctor tiene un usuario asociado, eliminarlo
         }
 
         // Eliminar el doctor
@@ -121,8 +120,6 @@ class DoctorController extends Controller
     {
         $config = Config::latest()->first();
         $doctores = Doctor::all();
-        // dd('storage/' . $config->logo);
-        // dd($config);
         $pdf = PDF::loadView('admin.doctores.pdf', compact('config', 'doctores'));
 
         // Incluir la numeración de páginas y el pie de página

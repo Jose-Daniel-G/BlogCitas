@@ -61,7 +61,6 @@ class ConfigController extends Controller
         $config->telefono = $request->input('telefono');
         $config->correo = $request->input('correo');
 
-        // Manejo de archivo logo si se ha subido
         if ($request->hasFile('logo')) {
             // Eliminar el logo anterior si existe
             if ($config->logo) {
