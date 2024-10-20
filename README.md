@@ -4,7 +4,9 @@ php artisan notification:table
 php artisan make:notification PostNotification 
 php artisan make:event PostEvent
 php artisan make:listener PostListener
-
+## optional it makes faster to send notifications
+php artisan queue:table
+php artisan queue:work
 
 SOFTWARE PARA UNA ACADEMIA AUTOMOVILISTICA DONDE SE LLEVE UN REGISTRO
 DE LAS CLASES POR CADA ALUMNO
