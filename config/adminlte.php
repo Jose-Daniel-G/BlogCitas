@@ -293,6 +293,15 @@ return [
     */
 
     'menu' => [
+        [
+            'text'        => '',
+            'url'         => '#',
+            'icon'        => 'far fa-bell',
+            'label'       => 0, // Aquí puedes usar una variable dinámica para contar notificaciones
+            'label_color' => 'warning',
+            'topnav_right' => true, // Esto lo coloca en el navbar
+            'submenu'     => [],
+        ],
         // Navbar items:
         // [
         //     'type' => 'navbar-search',
@@ -322,6 +331,11 @@ return [
         [
             'text' => 'Dashboard',
             'route' => 'admin.home',
+            'icon' => 'fas fa-home fa-fw ',
+        ],
+        [
+            'text' => 'Notificaciones',
+            'route' => 'posts.notifications',
             'icon' => 'fas fa-home fa-fw ',
         ],
         [

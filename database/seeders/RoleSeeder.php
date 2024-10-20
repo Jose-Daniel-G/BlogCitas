@@ -31,7 +31,6 @@ class RoleSeeder extends Seeder
 
 
         // Permission::create(['name'=>'admin.home'])->assignRole($admin);
-        Permission::create(['name' => 'admin.users.create'])->syncRoles([$admin]);
 
         Permission::create(['name' => 'admin.categories.index'])->syncRoles([$admin, $blogger]);
         Permission::create(['name' => 'admin.categories.create'])->syncRoles([$admin]);
@@ -54,8 +53,6 @@ class RoleSeeder extends Seeder
         Permission::create(['name' => 'admin.index']);
 
         //rutas para el admin
-        Permission::create(['name' => 'admin.users.index'])->syncRoles([$admin]);
-        //proximamente remplazadas estas rutas seran
         Permission::create(['name' => 'admin.users.index'])->syncRoles([$admin]);
         Permission::create(['name' => 'admin.users.create'])->syncRoles([$admin]);
         Permission::create(['name' => 'admin.users.store'])->syncRoles([$admin]);

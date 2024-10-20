@@ -138,7 +138,7 @@
             </div>
         {{-- @endcan --}}
     </div>
-    @can('cargar_datos_cosultorios')
+    {{-- @can('cargar_datos_cosultorios') --}}
         <div class="row">
             <div class="col-md-12">
                 <div class="card card-outline card-primary">
@@ -272,8 +272,8 @@
                 </div>
             </div>
         </div>
-    @endcan
-    @if (Auth::check() && Auth::user()->doctor)
+  {{--    @endcan
+   @if (Auth::check() && Auth::user()->doctor) --}}
         <div class="row">
             <div class="col-md-12">
                 <div class="card card-outline card-primary">
@@ -315,7 +315,7 @@
                 </div>
             </div>
         </div>
-    @endif
+    {{-- @endif --}}
 
 @stop
 
@@ -368,7 +368,6 @@
             var consultorio_id = $('#consultorio_select').val();
             var url = "{{ route('admin.horarios.cargar_datos_consultorios', ':id') }}";
             url = url.replace(':id', consultorio_id);
-            alert(consultorio_id);
             if (consultorio_id) {
                 $.ajax({
                     url: url,
@@ -458,9 +457,6 @@
 
     @if (session('info') && session('icono') && session('hora_reserva'))
         <script>
-            // document.addEventListener('DOMContentLoaded', function() {
-            //     $('#claseModal').show();
-            // });
             Swal.fire({
                 title: "{{ session('title') }}",
                 text: "{{ session('info') }}",

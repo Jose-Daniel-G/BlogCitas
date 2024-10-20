@@ -41,4 +41,5 @@ class PostController extends Controller
         return view('posts.tag', compact('posts', 'tag'));
 
     }
+
 }

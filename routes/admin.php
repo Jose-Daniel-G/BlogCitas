@@ -83,3 +83,11 @@ Route::get('/admin/horarios/consultorio/{id}', [HorarioController::class, 'carga
 Route::resource('categories', CategoryController::class)->except('show')->names('admin.categories');
 Route::resource('tags', TagController::class)->except('show')->names('admin.tags');
 Route::resource('posts', PostController::class)->names('admin.posts');
+
+Route::get('notifications',[PostController::class, 'indexNotifications'])->name('posts.notifications');
+Route::get('markAsRead', function(){
+    auth()->user()->unreadNotifications->markAsRead();
+    return redirect()->back();
+})->name('posts.markAsRead');
+
+Route::post('/mark-as-read', [PostController::class, 'markNotification'])->name('posts.markNotification');

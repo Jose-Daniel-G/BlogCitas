@@ -1,4 +1,10 @@
 php artisan storage:link
+php artisan notification:table
+<!-- php artisan make:notification InvoicePaid  -->
+php artisan make:notification PostNotification 
+php artisan make:event PostEvent
+php artisan make:listener PostListener
+
 
 SOFTWARE PARA UNA ACADEMIA AUTOMOVILISTICA DONDE SE LLEVE UN REGISTRO
 DE LAS CLASES POR CADA ALUMNO
@@ -117,6 +123,7 @@ php artisan lang:update
 composer require barrivdh/laravel-dompdf
 php artisan vendor:publish --provider="Barryvdh\DomPDF\ServiceProvider"
 composer require endroid/qr-code
+
 - optional if doesn't leave: composer clear-cache
 ```
 
@@ -134,6 +141,7 @@ php artisan adminlte:plugins install --plugin=sweetalert2
 php artisan adminlte:plugins install --plugin=fullcalendar
 php artisan adminlte:plugins install --plugin=datatables
 npm install jquery-ui
+php artisan vendor:publish --provider="JeroenNoten\LaravelAdminLte\AdminLteServiceProvider" --tag=views
 
 #### EN EL ARCHIO APP.JS PONER
 
